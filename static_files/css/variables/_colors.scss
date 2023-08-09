@@ -27,16 +27,27 @@ $yellow: #e4c662;
 $green: #67c29c;
 $cyan: #1cabc4;
 
+// Custom colors (Sunrise theme)
+$custom-color-1: #0c1915;
+$custom-color-2: #517a8b;
+$custom-color-3: #b5ae8f;
+$custom-color-4: #fcd68b;
+$custom-color-5: #ffe683;
+
+// Custom colors (Overwriting)
+$teal: $custom-color-2;
+$yellow: $custom-color-5;
+
 // State colors
 
-$primary: $red;
-$secondary: $purple;
+$primary: $custom-color-2;
+$secondary: $custom-color-3;
 $success: $green;
 $info: $cyan;
 $warning: $yellow;
 $danger: $red;
 $light: $gray-100;
-$dark: $gray-900;
+$dark: $custom-color-1;
 
 // Bootstrap color map
 
