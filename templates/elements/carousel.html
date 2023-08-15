@@ -1,0 +1,18 @@
+<div id="featured-project-carousel" class="carousel slide">
+  <div class="carousel-inner">
+    {% for project_image in featured_project.images.all %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <img src="{{ project_image.image.url }}" class="featured-image d-block w-100"
+             alt="{{ project_image.caption }}">
+      </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#featured-project-carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#featured-project-carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

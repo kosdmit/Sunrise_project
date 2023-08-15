@@ -5,6 +5,12 @@
 .projects-section {
     padding: 10rem 0;
 
+    .featured-image {
+        max-height: 510px;
+        object-fit: cover;
+        width: 100%;
+    }
+
     .featured-text {
         padding: 2rem;
 

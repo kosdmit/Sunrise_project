@@ -104,6 +104,7 @@ class ProjectImage(CompressImageBeforeSaveMixin, BaseModel):
     class Meta:
         verbose_name = _('project image')
         verbose_name_plural = _('project images')
+        ordering = ['order', 'num_id']
 
     def __str__(self):
         return self.caption

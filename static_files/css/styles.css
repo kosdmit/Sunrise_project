@@ -12170,6 +12170,11 @@ body {
 .projects-section {
   padding: 10rem 0;
 }
+.projects-section .featured-image {
+  max-height: 510px;
+  object-fit: cover;
+  width: 100%;
+}
 .projects-section .featured-text {
   padding: 2rem;
 }

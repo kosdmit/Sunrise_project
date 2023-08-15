@@ -42,7 +42,7 @@ class ProjectImageInlineAdmin(admin.TabularInline):
     model = ProjectImage
     fields = ('order', 'image', 'image_preview', 'caption')
     readonly_fields = ('image_preview',)
-    ordering = ('order',)
+    ordering = ('order', 'num_id')
     extra = 1
 
     def image_preview(self, obj):
