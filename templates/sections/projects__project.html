@@ -1,0 +1,18 @@
+<div class="row gx-0 {% if not even %}mb-5 mb-lg-0{% endif %} justify-content-center">
+  <div class="col-lg-6">
+    <img class="img-fluid project-image"
+         src="{{ project.images.first.image.url }}"
+         alt="{{ project.images.first.capture }}"/>
+  </div>
+  <div class="col-lg-6 {% if even %}order-lg-first{% endif %}">
+    <div class="bg-black text-center h-100 project">
+      <div class="d-flex h-100">
+        <div class="project-text w-100 my-auto text-center text-lg-left">
+          <h4 class="text-white">{{ project.title }}</h4>
+          <p class="mb-0 text-white-50">{{ project.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -13,4 +13,7 @@ class MainView(TemplateView):
         featured_project = Project.objects.filter(is_featured=True, is_active=True).first()
         context['featured_project'] = featured_project
 
+        projects = Project.objects.filter(is_featured=False, is_active=True)[:2]
+        context['projects'] = projects
+
         return context

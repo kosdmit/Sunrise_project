@@ -12184,6 +12184,10 @@ body {
     border-left: 0.5rem solid #517a8b;
   }
 }
+.projects-section .project-image {
+  height: 100%;
+  object-fit: cover;
+}
 .projects-section .project-text {
   padding: 3rem;
   font-size: 90%;
