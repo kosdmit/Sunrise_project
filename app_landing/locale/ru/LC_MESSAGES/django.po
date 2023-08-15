@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-11 01:13+0400\n"
+"POT-Creation-Date: 2023-08-15 18:22+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,85 +16,106 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: .\admin.py:12
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\admin.py:13
 msgid "meta"
 msgstr "инфо"
 
-#: .\admin.py:15
+#: .\admin.py:16
 msgid "identifiers"
 msgstr "идентификаторы"
 
-#: .\models.py:14
+#: .\admin.py:56
+msgid "image preview"
+msgstr "предпросмотр"
+
+#: .\models.py:15
 msgid "unique identifier"
 msgstr "уникальный идентификатор"
 
-#: .\models.py:15
+#: .\models.py:16
 msgid "#"
 msgstr "№"
 
-#: .\models.py:18
+#: .\models.py:19
 msgid "created by"
 msgstr "автор записи"
 
-#: .\models.py:20
+#: .\models.py:21
 msgid "updated by"
 msgstr "отредактировано"
 
-#: .\models.py:22
+#: .\models.py:23
 msgid "date of creation"
 msgstr "дата создания"
 
-#: .\models.py:23
+#: .\models.py:24
 msgid "date of updating"
 msgstr "дата изменения"
 
-#: .\models.py:25
+#: .\models.py:26
 msgid "is active"
 msgstr "активно?"
 
-#: .\models.py:44 .\models.py:59 .\models.py:73
+#: .\models.py:45 .\models.py:67 .\models.py:81
 msgid "title"
 msgstr "название"
 
-#: .\models.py:47 .\models.py:63
+#: .\models.py:48 .\models.py:71
 msgid "category"
 msgstr "категория"
 
-#: .\models.py:48
+#: .\models.py:49
 msgid "description"
 msgstr "описание"
 
-#: .\models.py:51 .\models.py:71 .\models.py:91
+#: .\models.py:50
+msgid "is featured project"
+msgstr "избранный проект?"
+
+#: .\models.py:59 .\models.py:79 .\models.py:99
 msgid "project"
 msgstr "проект"
 
-#: .\models.py:52
+#: .\models.py:60
 msgid "projects"
 msgstr "проекты"
 
-#: .\models.py:64
+#: .\models.py:72
 msgid "categories"
 msgstr "категории"
 
-#: .\models.py:74
+#: .\models.py:82
 msgid "value"
 msgstr "значение"
 
-#: .\models.py:77
+#: .\models.py:85
 msgid "parameter"
 msgstr "параметр"
 
-#: .\models.py:78
+#: .\models.py:86
 msgid "parameters"
 msgstr "параметры"
 
-#: .\models.py:92
+#: .\models.py:100
 msgid "image"
 msgstr "изображение"
 
-#: .\models.py:93
+#: .\models.py:101
 msgid "caption"
 msgstr "подпись"
+
+#: .\models.py:103
+msgid "order"
+msgstr "порядок"
+
+#: .\models.py:106
+msgid "project image"
+msgstr "иллюстрация проекта"
+
+#: .\models.py:107
+msgid "project images"
+msgstr "иллюстрации проекта"

@@ -1,7 +1,8 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from app_landing.models import Project, Category, Parameter
+from app_landing.models import Project, Category, Parameter, ProjectImage
 
 
 class BaseAdminMixin:
@@ -31,18 +32,43 @@ class BaseAdminMixin:
             obj.created_by = request.user
         obj.save()
 
+
+class ParameterInlineAdmin(admin.TabularInline):
+    model = Parameter
+    extra = 1
+
+
+class ProjectImageInlineAdmin(admin.TabularInline):
+    model = ProjectImage
+    fields = ('order', 'image', 'image_preview', 'caption')
+    readonly_fields = ('image_preview',)
+    ordering = ('order',)
+    extra = 1
+
+    def image_preview(self, obj):
+        # TODO: add right proportions support for image preview
+        if obj.image:
+            return mark_safe(
+                f'<img src="{obj.image.url}" width="80"/>'
+            )
+        return '-'
+
+    image_preview.short_description = _('image preview')
+
+
 # Register your models here.
 @admin.register(Project)
 class ProjectAdmin(BaseAdminMixin, admin.ModelAdmin):
-    list_display = ['num_id', 'title', 'category', 'is_active']
+    list_display = ['num_id', 'title', 'category', 'is_active', 'is_featured']
     list_display_links = ['title']
     list_filter = ['category', 'is_active']
+    inlines = [ParameterInlineAdmin, ProjectImageInlineAdmin]
 
     def get_fieldsets(self, request, obj=None):
         fieldsets = super().get_fieldsets(request, obj)
         fieldsets[1][1]['fields'].append('slug')
         fieldsets += [
-            (None, {"fields": ["title", "category", "description", 'is_active',]},),
+            (None, {"fields": ["title", "category", "description", 'is_active', 'is_featured']},),
         ]
 
         return fieldsets
@@ -79,15 +105,16 @@ class CategoryAdmin(BaseAdminMixin, admin.ModelAdmin):
         return readonly_fields
 
 
-@admin.register(Parameter)
-class ParameterAdmin(BaseAdminMixin, admin.ModelAdmin):
-    list_display = ['num_id', 'title', 'value', 'created_date', 'updated_date']
-    list_display_links = ['title']
-
-    def get_fieldsets(self, request, obj=None):
-        fieldsets = super().get_fieldsets(request, obj)
-        fieldsets += [
-            (None, {"fields": ["title", "value", "project"]}),
-        ]
-
-        return fieldsets
+# This object was added in ProjectAdmin like an TabularInline
+# @admin.register(Parameter)
+# class ParameterAdmin(BaseAdminMixin, admin.ModelAdmin):
+#     list_display = ['num_id', 'title', 'value', 'created_date', 'updated_date']
+#     list_display_links = ['title']
+#
+#     def get_fieldsets(self, request, obj=None):
+#         fieldsets = super().get_fieldsets(request, obj)
+#         fieldsets += [
+#             (None, {"fields": ["title", "value", "project"]}),
+#         ]
+#
+#         return fieldsets
