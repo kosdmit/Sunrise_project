@@ -17,13 +17,14 @@
     .form-signup {
         input {
             box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
-            padding: 1.25rem 2rem;
+            padding: 1rem 2rem;
             height: auto;
-            font-family: $font-family-special;
-            font-size: 80%;
+            font-family: $font-family-base;
+            //font-size: 80%;
             text-transform: uppercase;
             letter-spacing: 0.15rem;
             border: 0;
+            text-align: center;
         }
     }
 }

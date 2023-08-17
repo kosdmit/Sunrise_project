@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from app_landing.models import Project, Category, Parameter, ProjectImage
+from app_landing.models import Project, Category, Parameter, ProjectImage, \
+    Order
 
 
 class BaseAdminMixin:
@@ -40,9 +41,9 @@ class ParameterInlineAdmin(admin.TabularInline):
 
 class ProjectImageInlineAdmin(admin.TabularInline):
     model = ProjectImage
-    fields = ('order', 'image', 'image_preview', 'caption')
+    fields = ('ordering', 'image', 'image_preview', 'caption')
     readonly_fields = ('image_preview',)
-    ordering = ('order', 'num_id')
+    ordering = ('ordering', 'num_id')
     extra = 1
 
     def image_preview(self, obj):
@@ -103,6 +104,21 @@ class CategoryAdmin(BaseAdminMixin, admin.ModelAdmin):
         ]
 
         return readonly_fields
+
+
+@admin.register(Order)
+class OrderAdmin(BaseAdminMixin, admin.ModelAdmin):
+    list_display = ['num_id', 'customer_name', 'phone_number', 'status', ]
+    list_display_links = ['phone_number']
+    list_filter = ['status', ]
+
+    def get_fieldsets(self, request, obj=None):
+        fieldsets = super().get_fieldsets(request, obj)
+        fieldsets += [
+            (None, {"fields": ["customer_name", "phone_number", "note", "status"]}),
+        ]
+
+        return fieldsets
 
 
 # This object was added in ProjectAdmin like an TabularInline

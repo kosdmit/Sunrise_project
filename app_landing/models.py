@@ -6,6 +6,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from app_landing.models_mixins import CompressImageBeforeSaveMixin
+from app_landing.validators import phone_number_validator
 
 # Create your models here.
 User = get_user_model()
@@ -99,13 +100,35 @@ class ProjectImage(CompressImageBeforeSaveMixin, BaseModel):
     image = models.ImageField(upload_to='images/project_images/', verbose_name=_('image'))
     caption = models.CharField(max_length=150, blank=True, verbose_name=_('caption'))
     slug = AutoSlugField(populate_from='caption', unique=True)
-    order = models.IntegerField(default=0, verbose_name=_('order'))
+    ordering = models.IntegerField(default=0, verbose_name=_('ordering'))
 
     class Meta:
         verbose_name = _('project image')
         verbose_name_plural = _('project images')
-        ordering = ['order', 'num_id']
+        ordering = ['ordering', 'num_id']
 
     def __str__(self):
         return self.caption
+
+
+class Order(BaseModel):
+    STATUSES = [
+        ('new', _('new request')),
+        ('active', _('in progress')),
+        ('closed', _('closed')),
+        ('production', _('in production')),
+        ('success_sell', _('success sell')),
+    ]
+
+    customer_name = models.CharField(max_length=150, verbose_name=_('customer name'), null=True)
+    phone_number = models.CharField(max_length=20,
+                                    validators=[phone_number_validator, ],
+                                    verbose_name=_('phone number'),
+                                    unique=True)
+    status = models.CharField(max_length=12, choices=STATUSES, default=STATUSES[0][0], verbose_name=_('status'))
+    note = models.TextField(null=True, verbose_name=_('notes'))
+
+    class Meta:
+        verbose_name = _('order')
+        verbose_name_plural = _('orders')
 

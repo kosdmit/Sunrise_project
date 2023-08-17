@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-15 18:22+0400\n"
+"POT-Creation-Date: 2023-08-16 17:07+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,15 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\admin.py:13
+#: .\admin.py:14
 msgid "meta"
 msgstr "инфо"
 
-#: .\admin.py:16
+#: .\admin.py:17
 msgid "identifiers"
 msgstr "идентификаторы"
 
-#: .\admin.py:56
+#: .\admin.py:57
 msgid "image preview"
 msgstr "предпросмотр"
 
@@ -109,7 +109,7 @@ msgid "caption"
 msgstr "подпись"
 
 #: .\models.py:103
-msgid "order"
+msgid "ordering"
 msgstr "порядок"
 
 #: .\models.py:106
@@ -119,3 +119,51 @@ msgstr "иллюстрация проекта"
 #: .\models.py:107
 msgid "project images"
 msgstr "иллюстрации проекта"
+
+#: .\models.py:116
+msgid "new request"
+msgstr "новый запрос"
+
+#: .\models.py:117
+msgid "in progress"
+msgstr "в работе"
+
+#: .\models.py:118
+msgid "closed"
+msgstr "завершено"
+
+#: .\models.py:119
+msgid "in production"
+msgstr "продакшн"
+
+#: .\models.py:120
+msgid "success sell"
+msgstr "успешная продажа"
+
+#: .\models.py:123
+msgid "customer name"
+msgstr "имя клиента"
+
+#: .\models.py:126
+msgid "phone number"
+msgstr "номер телефона"
+
+#: .\models.py:128
+msgid "status"
+msgstr "статус"
+
+#: .\models.py:129
+msgid "notes"
+msgstr "заметки"
+
+#: .\models.py:132
+msgid "order"
+msgstr "Запрос"
+
+#: .\models.py:133
+msgid "orders"
+msgstr "Запросы"
+
+#: .\validators.py:9
+msgid "Incorrect phone number"
+msgstr "Некорректный формат номера телефона"
