@@ -1,3 +1,21 @@
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+          }
+      }
+  }
+  return cookieValue;
+}
+
+const csrftoken = getCookie('csrftoken');
+
+
 $(document).ready(function () {
 
   //Phone number form functionality
@@ -6,15 +24,17 @@ $(document).ready(function () {
   // API
   $("#contact-form").submit(function (event) {
     event.preventDefault();
-    let data = {
-      'phone_number': '+7' + phoneNumberInput.inputmask('unmaskedvalue'),
-    };
+    let phoneNumber = '+7' + phoneNumberInput.inputmask('unmaskedvalue')
+    console.log('sending phone number: ' + phoneNumber)
+
 
     $.ajax({
+      headers: {'X-CSRFToken': csrftoken},
       url: '/api/order_create/',
       type: 'POST',
-      data: JSON.stringify(data),
-      contentType: 'application/json',
+      data: {
+        'phone_number': phoneNumber,
+      },
       success: function (response) {
         $("#submitSuccessMessage").removeClass('d-none');
       },
