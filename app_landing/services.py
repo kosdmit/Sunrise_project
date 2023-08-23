@@ -1,7 +1,9 @@
+import re
 from abc import ABC, abstractmethod
 from textwrap import dedent
 
 import requests
+from django.urls import reverse
 
 
 class NotificationManager(ABC):
@@ -45,18 +47,34 @@ class MessageConstructor(ABC):
 
 
 class CallbackMessageConstructor(MessageConstructor):
-    def __init__(self, phone_number, is_new_phone):
+    def __init__(self, phone_number, order, is_new_phone, request):
         self.phone_number = phone_number
+        self.order = order
         self.is_new_phone = is_new_phone
+        self.request = request
 
     def get_message(self):
         message = dedent(f"""
             {'Поступил запрос на звонок от нового клиента'
              if self.is_new_phone else
              'Поступил повторный запрос на звонок от клиента'}
+            {'Имя: ' + self.order.customer_name if self.order.customer_name else ''}
             Телефон: {self.phone_number}
+            {'Статус: ' + self.order.status if self.order.status != self.order.DEFAULT_STATUS else ''}
+            {'Заметки: ' + self.order.note if self.order.note else ''}
+            Редактировать информацию о заявке: {self._get_admin_url()}
             """)
+
+        message = re.sub(r'\n+', '\n', message)
         return message
+
+    def _get_admin_url(self):
+        protocol = 'https://' if self.request.is_secure() else 'http://'
+        host = self.request.get_host()
+        url = reverse('admin:%s_%s_change' % (self.order._meta.app_label, self.order._meta.model_name),
+                      args=[self.order.pk])
+        return protocol + host + url
+
 
 
 

@@ -120,12 +120,14 @@ class Order(BaseModel):
         ('success_sell', _('success sell')),
     ]
 
+    DEFAULT_STATUS = STATUSES[0][0]
+
     customer_name = models.CharField(max_length=150, verbose_name=_('customer name'), null=True)
     phone_number = models.CharField(max_length=20,
                                     validators=[phone_number_validator, ],
                                     verbose_name=_('phone number'),
                                     unique=True)
-    status = models.CharField(max_length=12, choices=STATUSES, default=STATUSES[0][0], verbose_name=_('status'))
+    status = models.CharField(max_length=12, choices=STATUSES, default=DEFAULT_STATUS, verbose_name=_('status'))
     note = models.TextField(null=True, verbose_name=_('notes'))
 
     class Meta:
