@@ -12228,16 +12228,6 @@ body {
   border: 0;
   text-align: center;
 }
-.signup-section .error-message {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 15px;
-  border-radius: 8px;
-  display: inline-block;
-  backdrop-filter: blur(5px);
-}
 
 .contact-section {
   padding-top: 5rem;
