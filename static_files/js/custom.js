@@ -37,9 +37,11 @@ $(document).ready(function () {
       },
       success: function (response) {
         $("#submitSuccessMessage").removeClass('d-none');
+        $("#submitErrorMessage").addClass('d-none');
       },
       error: function (error) {
         $("#submitErrorMessage").removeClass('d-none');
+        $("#submitSuccessMessage").addClass('d-none');
       }
     });
   });
