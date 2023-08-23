@@ -1,10 +1,20 @@
+import os
+
 from django.views.generic import TemplateView, ListView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+import sunrise_project.settings as settings
 from app_landing.forms import OrderCreateForm
-from app_landing.models import Project
+from app_landing.models import Project, Order
+from app_landing.services import TelegramNotificationManager, \
+    CallbackMessageConstructor
+
+notification_manager = TelegramNotificationManager(
+    token=os.environ['TELEGRAM_ADMIN_BOT_TOKEN_SUNRISE'],
+    chat_id=settings.TELEGRAM_ADMIN_CHAT_ID,
+)
 
 
 # Create your views here.
@@ -35,5 +45,14 @@ class ProjectListView(ListView):
 class OrderCreateView(APIView):
     def post(self, request):
         phone_number = request.data.get('phone_number')
-        # Do something with phone_number, like saving it to a database
+        is_new_phone = not Order.objects.filter(phone_number=phone_number).exists()
+
+        try:
+            notification_manager.send_notification(
+                message_constructor=CallbackMessageConstructor,
+                data={'phone_number': phone_number, 'is_new_phone': is_new_phone},
+            )
+        except notification_manager.NotificationSendingError:
+            return Response({'status': 'error'}, status=status.HTTP_424_FAILED_DEPENDENCY)
+
         return Response({'status': 'success'}, status=status.HTTP_201_CREATED)
