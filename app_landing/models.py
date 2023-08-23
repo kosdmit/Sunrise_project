@@ -3,7 +3,7 @@ import uuid
 from autoslug import AutoSlugField
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, gettext
 
 from app_landing.models_mixins import CompressImageBeforeSaveMixin
 from app_landing.validators import phone_number_validator
@@ -46,7 +46,7 @@ class Project(BaseModel):
     slug = AutoSlugField(populate_from='title', unique=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True,
                                  blank=True, verbose_name=_('category'))
-    description = models.TextField(verbose_name=_('description'), null=True)
+    description = models.TextField(verbose_name=_('description'), null=True, blank=True)
     is_featured = models.BooleanField(verbose_name=_('is featured project'), default=False)
 
     def save(self, *args, **kwargs):
@@ -98,7 +98,7 @@ class ProjectImage(CompressImageBeforeSaveMixin, BaseModel):
     project = models.ForeignKey('Project', on_delete=models.CASCADE,
                                 related_name='images', verbose_name=_('project'))
     image = models.ImageField(upload_to='images/project_images/', verbose_name=_('image'))
-    caption = models.CharField(max_length=150, blank=True, verbose_name=_('caption'))
+    caption = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('caption'))
     slug = AutoSlugField(populate_from='caption', unique=True)
     ordering = models.IntegerField(default=0, verbose_name=_('ordering'))
 
@@ -122,15 +122,19 @@ class Order(BaseModel):
 
     DEFAULT_STATUS = STATUSES[0][0]
 
-    customer_name = models.CharField(max_length=150, verbose_name=_('customer name'), null=True)
+    customer_name = models.CharField(max_length=150, verbose_name=_('customer name'), null=True, blank=True)
     phone_number = models.CharField(max_length=20,
                                     validators=[phone_number_validator, ],
                                     verbose_name=_('phone number'),
                                     unique=True)
     status = models.CharField(max_length=12, choices=STATUSES, default=DEFAULT_STATUS, verbose_name=_('status'))
-    note = models.TextField(null=True, verbose_name=_('notes'))
+    note = models.TextField(null=True, blank=True, verbose_name=_('notes'))
 
     class Meta:
         verbose_name = _('order')
         verbose_name_plural = _('orders')
+
+    def __str__(self):
+        return (f"{gettext('order')} {gettext('#')} {str(self.num_id)} {gettext('from')} ") + \
+               (f"{self.customer_name} ({self.phone_number})" if self.customer_name else self.phone_number)
 
