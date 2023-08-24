@@ -41,6 +41,14 @@ class ProjectListView(ListView):
     model = Project
     paginate_by = 9
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        order_create_form = OrderCreateForm()
+        context['order_create_form'] = order_create_form
+
+        return context
+
 
 class OrderCreateView(APIView):
     def post(self, request):
