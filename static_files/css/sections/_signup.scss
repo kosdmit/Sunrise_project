@@ -42,5 +42,11 @@
             border: 0;
             text-align: center;
         }
+
+        .message {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
     }
 }

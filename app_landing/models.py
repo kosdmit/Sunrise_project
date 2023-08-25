@@ -51,9 +51,9 @@ class Project(BaseModel):
 
     def save(self, *args, **kwargs):
         if self.is_featured:
-            Project.objects.filter(is_featured=True).update(is_featured=False)
+            self.__class__.objects.filter(is_featured=True).update(is_featured=False)
 
-        super(Project, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = _('project')
@@ -138,3 +138,37 @@ class Order(BaseModel):
         return (f"{gettext('order')} {gettext('#')} {str(self.num_id)} {gettext('from')} ") + \
                (f"{self.customer_name} ({self.phone_number})" if self.customer_name else self.phone_number)
 
+
+class Tariff(BaseModel):
+    title = models.CharField(max_length=150, verbose_name=_('title'))
+    price = models.IntegerField(verbose_name=_('price'))
+    price_prefix = models.BooleanField(default=False, verbose_name=_('price prefix'))
+    description = models.TextField(verbose_name=_('description'), null=True, blank=True)
+    tariff_advantages = models.ManyToManyField('TariffAdvantage', verbose_name=_('tariff advantages'), null=True, blank=True)
+    is_featured = models.BooleanField(verbose_name=_('is featured tariff'), default=False)
+
+    def save(self, *args, **kwargs):
+        if self.is_featured:
+            self.__class__.objects.filter(is_featured=True).update(is_featured=False)
+
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = _('tariff')
+        verbose_name_plural = _('tariffs')
+
+    def __str__(self):
+        return self.title
+
+
+class TariffAdvantage(BaseModel):
+    title = models.CharField(max_length=150, verbose_name=_('title'))
+    ordering = models.IntegerField(default=0, verbose_name=_('ordering'))
+
+    class Meta:
+        verbose_name = _('tariff advantage')
+        verbose_name_plural = _('tariff advantages')
+        ordering = ['ordering', 'num_id']
+
+    def __str__(self):
+        return self.title

@@ -30,9 +30,6 @@ class MainView(TemplateView):
         projects = Project.objects.filter(is_featured=False, is_active=True).order_by('?')[:2]
         context['projects'] = projects
 
-        order_create_form = OrderCreateForm()
-        context['order_create_form'] = order_create_form
-
         return context
 
 
@@ -44,8 +41,16 @@ class ProjectListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        order_create_form = OrderCreateForm()
-        context['order_create_form'] = order_create_form
+
+        return context
+
+
+class PricingView(TemplateView):
+    template_name = 'pricing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
 
         return context
 

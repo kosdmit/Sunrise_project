@@ -3,7 +3,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 from app_landing.models import Project, Category, Parameter, ProjectImage, \
-    Order
+    Order, Tariff, TariffAdvantage
 
 
 class BaseAdminMixin:
@@ -119,6 +119,40 @@ class OrderAdmin(BaseAdminMixin, admin.ModelAdmin):
         ]
 
         return fieldsets
+
+
+@admin.register(Tariff)
+class TariffAdmin(BaseAdminMixin, admin.ModelAdmin):
+    list_display = ['num_id', 'title', 'price', 'is_featured', ]
+    list_display_links = ['title']
+
+    def get_fieldsets(self, request, obj=None):
+        fieldsets = super().get_fieldsets(request, obj)
+        fieldsets += [
+            (None, {"fields": ["title",
+                               ("price_prefix", "price"),
+                               "description",
+                               "tariff_advantages",
+                               "is_featured"]}),
+        ]
+
+        return fieldsets
+
+
+@admin.register(TariffAdvantage)
+class TariffAdvantageAdmin(BaseAdminMixin, admin.ModelAdmin):
+    list_display = ['ordering', 'num_id', 'title', ]
+    list_display_links = ['title']
+    ordering = ['ordering', 'num_id']
+
+    def get_fieldsets(self, request, obj=None):
+        fieldsets = super().get_fieldsets(request, obj)
+        fieldsets += [
+            (None, {"fields": ["title", "ordering"]}),
+        ]
+
+        return fieldsets
+
 
 
 # This object was added in ProjectAdmin like an TabularInline

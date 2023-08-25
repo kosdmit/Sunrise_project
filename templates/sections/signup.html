@@ -1,10 +1,10 @@
-<section class="signup-section" id="signup">
+<section class="signup-section" id="tariffs">
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5">
       <div class="col-md-10 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center">
         <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
         <h2 class="text-white mb-5">Узнайте стоимость вашего проекта</h2>
-        <form class="form-signup" id="contact-form" action="{% url 'order_create' %}">
+        <form class="form-signup mb-5 pb-3" id="contact-form" action="{% url 'order_create' %}">
           <!-- Phone number input-->
           <div class="row input-group-newsletter d-block d-sm-flex">
             <div class="col d-flex">
@@ -16,17 +16,18 @@
               </button>
             </div>
           </div>
-          <div class="d-none" id="submitSuccessMessage">
+          <div class="d-none message" id="submitSuccessMessage">
             <div class="text-center mb-3 mt-2 text-white">
               <div class="fw-bolder">Запрос успешно отправлен!</div>
             </div>
           </div>
-          <div class="d-none" id="submitErrorMessage">
+          <div class="d-none message" id="submitErrorMessage">
             <div class="text-center mb-3 mt-2 text-danger">
               <div class="fw-bolder">При отправке запроса произошла ошибка, попробуйте снова</div>
             </div>
           </div>
         </form>
+        <a class="" href="{% url 'pricing' %}">Смотреть все тарифы</a>
       </div>
     </div>
   </div>

@@ -12245,6 +12245,11 @@ body {
   border: 0;
   text-align: center;
 }
+.signup-section .form-signup .message {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
 
 .contact-section {
   padding-top: 5rem;
