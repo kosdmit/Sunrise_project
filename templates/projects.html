@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  {% include 'sections/navigation.html' %}
-  {% include 'sections/about__projects.html' with background_image='True' %}
+  {% include 'sections/navigation.html' with path='projects' %}
+  {% include 'sections/about__projects.html' with path='projects' %}
   {% include 'sections/projects.html' %}
   {% include 'sections/signup.html' %}
   {% include 'sections/contact.html' %}

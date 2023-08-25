@@ -10,8 +10,18 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#about">О нас</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Проекты</a></li>
-        <li class="nav-item"><a class="nav-link" href="#tariffs">Тарифы</a></li>
+        <li class="nav-item">
+          <a class="nav-link {% if path != 'projects' %}redefined-link{% endif %}"
+             href="#projects" data-href="{% url 'projects' %}">
+            Проекты
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if path != 'pricing' %}redefined-link{% endif %}"
+             href="#tariffs" data-href="{% url 'pricing' %}">
+            Тарифы
+          </a>
+        </li>
         <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a>
         </li>
       </ul>

@@ -56,6 +56,10 @@ $(document).ready(function () {
     }
   })
 
-  //
+  //Overriding behavior for main navbar links
+  $('.redefined-link').click(function(event) {
+      event.preventDefault();
+      window.location.href = $(this).data('href');
+    });
 
 });
