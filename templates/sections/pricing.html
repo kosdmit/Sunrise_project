@@ -1,0 +1,39 @@
+<section class="tariffs-section bg-light" id="tariffs">
+  <div class="container px-4 px-lg-5 py-5">
+    <div class="row row-cols-1 row-cols-lg-3 mb-5 text-center">
+      {% for tariff in tariffs %}
+        {% include 'sections/pricing__card.html' %}
+      {% endfor %}
+    </div>
+
+    <div class="d-none d-md-block">
+      <h2 class="display-6 text-center mb-4">Сравнение</h2>
+      <div class="table-responsive mb-5">
+        <table class="table table-light text-center">
+          <thead>
+            <tr>
+              <th style="width: 34%;"></th>
+              {% for tariff in tariffs %}
+                <th style="width: 22%;">{{ tariff.title }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for advantage in tariff_advantages %}
+              <tr>
+                <th scope="row" class="text-start">{{ advantage.title }}</th>
+                {% for tariff in tariffs %}
+                  <td>
+                    {% if advantage in tariff.tariff_advantages.all %}
+                      <i class="fa-solid fa-check"></i>
+                    {% endif %}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

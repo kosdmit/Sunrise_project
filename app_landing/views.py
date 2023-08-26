@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 
 import sunrise_project.settings as settings
 from app_landing.forms import OrderCreateForm
-from app_landing.models import Project, Order
+from app_landing.models import Project, Order, Tariff, TariffAdvantage
 from app_landing.services import TelegramNotificationManager, \
     CallbackMessageConstructor
 
@@ -51,6 +51,8 @@ class PricingView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        context['tariffs'] = Tariff.objects.all().order_by('price')
+        context['tariff_advantages'] = TariffAdvantage.objects.all()
 
         return context
 
