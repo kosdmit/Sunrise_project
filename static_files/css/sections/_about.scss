@@ -17,7 +17,7 @@
     }
 
     // Grayscale filter for background image
-    &.background-image::before {
+    &.projects-bg::before {
         content: "";
         position: absolute;
         top: 0;
@@ -33,5 +33,24 @@
         background-size: cover;
 
         filter: grayscale(40%) brightness(0.4);
+    }
+
+    &.pricing-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+
+        background-image: url("/static/img/bg_images/bg-pricing.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-size: cover;
+
+        filter: grayscale(40%) brightness(0.4);
+
     }
 }
