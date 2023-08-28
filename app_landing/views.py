@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 import sunrise_project.settings as settings
-from app_landing.forms import OrderCreateForm
 from app_landing.models import Project, Order, Tariff, TariffAdvantage
 from app_landing.services import TelegramNotificationManager, \
     CallbackMessageConstructor
@@ -40,7 +39,6 @@ class ProjectListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
 
         return context
 
