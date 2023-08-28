@@ -1,0 +1,91 @@
+//
+// Masonry grid for Projects section
+//
+
+$grid-item-height: 20rem;
+$columns-count: (
+    'xs': 1,
+    'sm': 1,
+    'md': 2,
+    'lg': 3,
+    'xl': 3,
+    'xxl': 4,
+);
+
+@mixin masonry-grid ($columns-count) {
+    .grid-sizer,
+    .grid-item {
+      width: 100% / $columns-count;
+    }
+
+    .grid-item {
+        float: left;
+
+        .fit-cover {
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+            height: $grid-item-height;
+        }
+    }
+
+    .grid-item.grid-item--width2 {
+        width: 100% / $columns-count * 2;
+
+        .fit-cover {
+            height: $grid-item-height*2 + map-get($spacers, 2)*2;
+        }
+    }
+
+    .grid-item--width3 {
+        width: 100%;
+    }
+}
+
+
+.projects-section .masonry-grid {
+    @media (max-width: 575px) {
+        @include masonry-grid(map-get($columns-count, 'xs'));
+
+        .grid-item.grid-item--width2 {
+            width: 100%;
+
+            .fit-cover {
+                height: $grid-item-height;
+            }
+        }
+
+        .grid-item--width3 {
+            width: 100%;
+        }
+    }
+    @media (min-width: 576px) and (max-width: 767px) {
+        @include masonry-grid(map-get($columns-count, 'sm'));
+
+        .grid-item.grid-item--width2 {
+            width: 100%;
+
+            .fit-cover {
+                height: $grid-item-height;
+            }
+        }
+
+        .grid-item--width3 {
+            width: 100%;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+        @include masonry-grid(map-get($columns-count, 'md'));
+    }
+    @media (min-width: 992px) and (max-width: 1199px) {
+        @include masonry-grid(map-get($columns-count, 'lg'));
+    }
+    @media (min-width: 1200px) and (max-width: 1399px) {
+        @include masonry-grid(map-get($columns-count, 'xl'));
+    }
+    @media (min-width: 1400px) {
+        @include masonry-grid(map-get($columns-count, 'xxl'));
+    }
+
+}
+

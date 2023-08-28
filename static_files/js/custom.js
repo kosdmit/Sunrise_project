@@ -62,4 +62,14 @@ $(document).ready(function () {
       window.location.href = $(this).data('href');
     });
 
+  var $masonryGrid = $('.masonry-grid').imagesLoaded( function() {
+    // init Masonry after all images have loaded
+    $masonryGrid.masonry({
+      // options
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentPosition: true,
+    });
+  });
+
 });
