@@ -144,7 +144,7 @@ class Tariff(BaseModel):
     price = models.IntegerField(verbose_name=_('price'))
     price_prefix = models.BooleanField(default=False, verbose_name=_('price prefix'))
     description = models.TextField(verbose_name=_('description'), null=True, blank=True)
-    tariff_advantages = models.ManyToManyField('TariffAdvantage', verbose_name=_('tariff advantages'), null=True, blank=True)
+    tariff_advantages = models.ManyToManyField('TariffAdvantage', verbose_name=_('tariff advantages'))
     is_featured = models.BooleanField(verbose_name=_('is featured tariff'), default=False)
 
     def save(self, *args, **kwargs):

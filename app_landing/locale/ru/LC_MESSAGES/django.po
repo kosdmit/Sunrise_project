@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 22:36+0400\n"
+"POT-Creation-Date: 2023-08-27 18:06+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,7 +60,7 @@ msgstr "дата изменения"
 msgid "is active"
 msgstr "активно?"
 
-#: .\models.py:45 .\models.py:67 .\models.py:81
+#: .\models.py:45 .\models.py:67 .\models.py:81 .\models.py:143 .\models.py:165
 msgid "title"
 msgstr "название"
 
@@ -68,7 +68,7 @@ msgstr "название"
 msgid "category"
 msgstr "категория"
 
-#: .\models.py:49
+#: .\models.py:49 .\models.py:146
 msgid "description"
 msgstr "описание"
 
@@ -108,7 +108,7 @@ msgstr "изображение"
 msgid "caption"
 msgstr "подпись"
 
-#: .\models.py:103
+#: .\models.py:103 .\models.py:166
 msgid "ordering"
 msgstr "порядок"
 
@@ -163,6 +163,34 @@ msgstr "Запрос"
 #: .\models.py:135
 msgid "orders"
 msgstr "Запросы"
+
+#: .\models.py:144
+msgid "price"
+msgstr "цена"
+
+#: .\models.py:145
+msgid "price prefix"
+msgstr "приставка 'от' к цене"
+
+#: .\models.py:147 .\models.py:170
+msgid "tariff advantages"
+msgstr "услуги"
+
+#: .\models.py:148
+msgid "is featured tariff"
+msgstr "избранный проект?"
+
+#: .\models.py:157
+msgid "tariff"
+msgstr "тариф"
+
+#: .\models.py:158
+msgid "tariffs"
+msgstr "тарифы"
+
+#: .\models.py:169
+msgid "tariff advantage"
+msgstr "услуга"
 
 #: .\validators.py:9
 msgid "Incorrect phone number"

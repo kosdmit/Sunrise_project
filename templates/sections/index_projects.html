@@ -1,0 +1,15 @@
+<section class="projects-section bg-light" id="projects">
+  <div class="container px-4 px-lg-5">
+    {% include 'sections/index_projects__featured_project.html' %}
+    {% for project in projects %}
+      {% if forloop.counter|divisibleby:"2" %}
+        {% include 'sections/index_projects__project.html' with even='True' %}
+      {% else %}
+        {% include 'sections/index_projects__project.html' %}
+      {% endif %}
+    {% endfor %}
+    <div class="d-flex justify-content-center mt-3">
+      <a href="{% url 'projects' %}" class="btn btn-primary">Смотреть все</a>
+    </div>
+  </div>
+</section>
