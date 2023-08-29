@@ -1,7 +1,15 @@
 <div class="card text-bg-dark rounded-0 border-0">
   <img src="{{ project.images.first.image.url }}" class="card-img rounded-0 fit-cover" alt="...">
-  <div class="card-img-overlay d-flex flex-column justify-content-end">
-    <h5 class="card-title">{{ project.title }}</h5>
-    <p class="card-text"><small>Last updated 3 mins ago</small></p>
+  <div class="card-img-overlay {% if not project.is_featured %}small-overlay{% endif %}">
+    <div class="hidden-text">
+      {% if project.is_featured %}
+        <p class="card-text">{{ project.description }}</p>
+        <a class="text-white">Подробнее</a>
+      {% endif %}
+    </div>
+    <div class="visible-text-text">
+      <h5 class="card-title">{{ project.title }}</h5>
+      <p class="card-text"><small>Last updated 3 mins ago</small></p>
+    </div>
   </div>
 </div>
