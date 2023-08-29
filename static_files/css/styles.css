@@ -12204,6 +12204,11 @@ body {
 .projects-section {
   padding: 10rem 0;
 }
+@media (max-width: 575px) {
+  .projects-section {
+    padding-top: 1.5rem;
+  }
+}
 .projects-section .featured-image {
   max-height: 510px;
   object-fit: cover;
@@ -12242,12 +12247,20 @@ body {
   }
 }
 
+.projects-section .masonry-grid {
+  max-width: 1800px;
+  margin: 0 auto;
+}
 @media (max-width: 575px) {
+  .projects-section .masonry-grid {
+    /* This sets the height to be equal to the width */
+  }
   .projects-section .masonry-grid .grid-sizer,
   .projects-section .masonry-grid .grid-item {
     width: 100%;
   }
   .projects-section .masonry-grid .grid-item {
+    padding: 0.5rem;
     float: left;
   }
   .projects-section .masonry-grid .grid-item .fit-cover {
@@ -12265,11 +12278,31 @@ body {
   .projects-section .masonry-grid .grid-item--width3 {
     width: 100%;
   }
+  .projects-section .masonry-grid .grid-item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .projects-section .masonry-grid .card {
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+  }
+  .projects-section .masonry-grid .card img.fit-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   .projects-section .masonry-grid .grid-item.grid-item--width2 {
     width: 100%;
   }
-  .projects-section .masonry-grid .grid-item.grid-item--width2 .fit-cover {
-    height: 20rem;
+  .projects-section .masonry-grid .grid-item.grid-item--width2 img.fit-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
   .projects-section .masonry-grid .grid-item--width3 {
     width: 100%;
@@ -12281,6 +12314,7 @@ body {
     width: 100%;
   }
   .projects-section .masonry-grid .grid-item {
+    padding: 0.5rem;
     float: left;
   }
   .projects-section .masonry-grid .grid-item .fit-cover {
@@ -12297,6 +12331,10 @@ body {
   }
   .projects-section .masonry-grid .grid-item--width3 {
     width: 100%;
+  }
+  .projects-section .masonry-grid .grid-item {
+    padding-left: 0;
+    padding-right: 0;
   }
   .projects-section .masonry-grid .grid-item.grid-item--width2 {
     width: 100%;
@@ -12314,19 +12352,20 @@ body {
     width: 50%;
   }
   .projects-section .masonry-grid .grid-item {
+    padding: 0.5rem;
     float: left;
   }
   .projects-section .masonry-grid .grid-item .fit-cover {
     object-fit: cover;
     object-position: center;
     width: 100%;
-    height: 20rem;
+    height: 13rem;
   }
   .projects-section .masonry-grid .grid-item.grid-item--width2 {
     width: 100%;
   }
   .projects-section .masonry-grid .grid-item.grid-item--width2 .fit-cover {
-    height: 41rem;
+    height: 27rem;
   }
   .projects-section .masonry-grid .grid-item--width3 {
     width: 100%;
@@ -12338,19 +12377,20 @@ body {
     width: 33.3333333333%;
   }
   .projects-section .masonry-grid .grid-item {
+    padding: 0.5rem;
     float: left;
   }
   .projects-section .masonry-grid .grid-item .fit-cover {
     object-fit: cover;
     object-position: center;
     width: 100%;
-    height: 20rem;
+    height: 10rem;
   }
   .projects-section .masonry-grid .grid-item.grid-item--width2 {
     width: 66.6666666667%;
   }
   .projects-section .masonry-grid .grid-item.grid-item--width2 .fit-cover {
-    height: 41rem;
+    height: 21rem;
   }
   .projects-section .masonry-grid .grid-item--width3 {
     width: 100%;
@@ -12362,19 +12402,20 @@ body {
     width: 33.3333333333%;
   }
   .projects-section .masonry-grid .grid-item {
+    padding: 0.5rem;
     float: left;
   }
   .projects-section .masonry-grid .grid-item .fit-cover {
     object-fit: cover;
     object-position: center;
     width: 100%;
-    height: 20rem;
+    height: 13rem;
   }
   .projects-section .masonry-grid .grid-item.grid-item--width2 {
     width: 66.6666666667%;
   }
   .projects-section .masonry-grid .grid-item.grid-item--width2 .fit-cover {
-    height: 41rem;
+    height: 27rem;
   }
   .projects-section .masonry-grid .grid-item--width3 {
     width: 100%;
@@ -12386,19 +12427,20 @@ body {
     width: 25%;
   }
   .projects-section .masonry-grid .grid-item {
+    padding: 0.5rem;
     float: left;
   }
   .projects-section .masonry-grid .grid-item .fit-cover {
     object-fit: cover;
     object-position: center;
     width: 100%;
-    height: 20rem;
+    height: 11rem;
   }
   .projects-section .masonry-grid .grid-item.grid-item--width2 {
     width: 50%;
   }
   .projects-section .masonry-grid .grid-item.grid-item--width2 .fit-cover {
-    height: 41rem;
+    height: 23rem;
   }
   .projects-section .masonry-grid .grid-item--width3 {
     width: 100%;

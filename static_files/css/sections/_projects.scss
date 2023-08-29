@@ -5,6 +5,10 @@
 .projects-section {
     padding: 10rem 0;
 
+    @media (max-width: 575px) {
+        padding-top: map-get($spacers, 4);
+    }
+
     .featured-image {
         max-height: 510px;
         object-fit: cover;

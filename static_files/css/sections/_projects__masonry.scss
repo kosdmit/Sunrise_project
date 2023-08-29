@@ -2,7 +2,14 @@
 // Masonry grid for Projects section
 //
 
-$grid-item-height: 20rem;
+$grid-item-height: (
+        'xs': 20rem,
+        'sm': 20rem,
+        'md': 13rem,
+        'lg': 10rem,
+        'xl': 13rem,
+        'xxl': 11rem,
+);
 $columns-count: (
     'xs': 1,
     'sm': 1,
@@ -12,13 +19,14 @@ $columns-count: (
     'xxl': 4,
 );
 
-@mixin masonry-grid ($columns-count) {
+@mixin masonry-grid ($columns-count, $grid-item-height) {
     .grid-sizer,
     .grid-item {
       width: 100% / $columns-count;
     }
 
     .grid-item {
+        padding: map-get($spacers, 2);
         float: left;
 
         .fit-cover {
@@ -44,14 +52,39 @@ $columns-count: (
 
 
 .projects-section .masonry-grid {
+    max-width: 1800px;
+    margin: 0 auto;
     @media (max-width: 575px) {
-        @include masonry-grid(map-get($columns-count, 'xs'));
+        @include masonry-grid(map-get($columns-count, 'xs'), map-get($grid-item-height, 'xs'));
+
+        .grid-item {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        /* This sets the height to be equal to the width */
+        .card {
+            height: 0;
+            padding-bottom: 100%;
+            position: relative;
+            img.fit-cover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
 
         .grid-item.grid-item--width2 {
             width: 100%;
 
-            .fit-cover {
-                height: $grid-item-height;
+            img.fit-cover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
             }
         }
 
@@ -60,13 +93,18 @@ $columns-count: (
         }
     }
     @media (min-width: 576px) and (max-width: 767px) {
-        @include masonry-grid(map-get($columns-count, 'sm'));
+        @include masonry-grid(map-get($columns-count, 'sm'), map-get($grid-item-height, 'sm'));
+
+        .grid-item {
+            padding-left: 0;
+            padding-right: 0;
+        }
 
         .grid-item.grid-item--width2 {
             width: 100%;
 
             .fit-cover {
-                height: $grid-item-height;
+                height: map-get($grid-item-height, 'sm');
             }
         }
 
@@ -75,16 +113,16 @@ $columns-count: (
         }
     }
     @media (min-width: 768px) and (max-width: 991px) {
-        @include masonry-grid(map-get($columns-count, 'md'));
+        @include masonry-grid(map-get($columns-count, 'md'), map-get($grid-item-height, 'md'));
     }
     @media (min-width: 992px) and (max-width: 1199px) {
-        @include masonry-grid(map-get($columns-count, 'lg'));
+        @include masonry-grid(map-get($columns-count, 'lg'), map-get($grid-item-height, 'lg'));
     }
     @media (min-width: 1200px) and (max-width: 1399px) {
-        @include masonry-grid(map-get($columns-count, 'xl'));
+        @include masonry-grid(map-get($columns-count, 'xl'), map-get($grid-item-height, 'xl'));
     }
     @media (min-width: 1400px) {
-        @include masonry-grid(map-get($columns-count, 'xxl'));
+        @include masonry-grid(map-get($columns-count, 'xxl'), map-get($grid-item-height, 'xxl'));
     }
 
 }

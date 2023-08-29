@@ -3,7 +3,7 @@
     <div class="masonry-grid">
       <div class="grid-sizer"></div>
       {% for project in page_obj %}
-        <div class="grid-item {% if project.is_featured %}grid-item--width2{% endif %} p-2">
+        <div class="grid-item {% if project.is_featured %}grid-item--width2{% endif %}">
           {% include 'sections/projects__card.html' %}
         </div>
       {% endfor %}
