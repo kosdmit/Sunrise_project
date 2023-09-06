@@ -16,6 +16,7 @@
                 #{fade-out($black, 0.2)} 100%);
     }
 
+    // TODO: delete in release
     // Grayscale filter for background image
     &.projects-bg::before {
         content: "";
@@ -35,6 +36,7 @@
         filter: grayscale(40%) brightness(0.4);
     }
 
+    // TODO: delete in release
     &.pricing-bg::before {
         content: "";
         position: absolute;
