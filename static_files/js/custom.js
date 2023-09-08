@@ -1,3 +1,4 @@
+// Gets csrf token from cookie
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== '') {
@@ -56,12 +57,8 @@ $(document).ready(function () {
     }
   })
 
-  //Overriding behavior for main navbar links
-  $('.redefined-link').click(function(event) {
-      event.preventDefault();
-      window.location.href = $(this).data('href');
-    });
 
+  // Masonry Grid activation
   var $masonryGrid = $('.masonry-grid').imagesLoaded( function() {
     // init Masonry after all images have loaded
     $masonryGrid.masonry({

@@ -12179,36 +12179,6 @@ body {
 .about-section:not(.background-image) {
   background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
 }
-.about-section.projects-bg::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  background-image: url("/static/img/bg_images/bg-projects.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-  filter: grayscale(40%) brightness(0.4);
-}
-.about-section.pricing-bg::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  background-image: url("/static/img/bg_images/bg-pricing.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-  filter: grayscale(40%) brightness(0.4);
-}
 
 .projects-section {
   padding: 10rem 0;
@@ -12494,6 +12464,27 @@ body {
   .projects-section .masonry-grid .grid-item--width3 {
     width: 100%;
   }
+}
+
+.pricing-section {
+  position: relative;
+  padding: 10rem 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%);
+}
+.pricing-section.pricing-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url("/static/img/bg_images/bg-pricing.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  filter: grayscale(40%) brightness(0.4);
 }
 
 .signup-section {
