@@ -1,50 +1,64 @@
-<section class="pricing-section pricing-bg" id="pricing">
-  <div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-lg-8 text-center">
-        <h2 class="text-white mb-4">Тарифные планы</h2>
-        <div class="text-white-50">
-          Выберите пакет который вам подходит: Базовый, Стандартный или Премиум.
-          Каждый тариф предлагает высокое качество услуг.
+<section class="pricing-section" id="pricing">
+  <div class="pricing-bg">
+    <div class="container px-4 px-lg-5 mb-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mb-4">Тарифные планы</h2>
+          <div class="text-white-50">
+            Выберите пакет который вам подходит.
+            <br>
+            Каждый тариф предлагает высокое качество услуг.
+          </div>
         </div>
+      </div>
+    </div>
+
+    <div class="container px-4 px-lg-5 pb-4">
+      <div class="row row-cols-1 row-cols-lg-3 text-center">
+        {% for tariff in tariffs %}
+          {% include 'sections/pricing__card.html' %}
+        {% endfor %}
       </div>
     </div>
   </div>
 
-  <div class="container px-4 px-lg-5 py-5">
-    <div class="row row-cols-1 row-cols-lg-3 mb-5 text-center">
-      {% for tariff in tariffs %}
-        {% include 'sections/pricing__card.html' %}
-      {% endfor %}
-    </div>
+  <div class="bg-black d-none d-lg-block  pb-5">
+    <div class="container px-4 px-lg-5 pb-5">
+      <div class="text-center mb-5">
+        <button class="btn btn-glass" type="button" data-bs-toggle="collapse" data-bs-target="#tariffsComparing" aria-expanded="false" aria-controls="tariffsComparing">
+          Сравнить <i class="fa-solid fa-angles-down"></i>
+        </button>
+      </div>
 
-    <div class="d-none d-md-block">
-      <h2 class="display-6 text-center mb-4">Сравнение</h2>
-      <div class="table-responsive mb-5">
-        <table class="table table-light text-center">
-          <thead>
-            <tr>
-              <th style="width: 34%;"></th>
-              {% for tariff in tariffs %}
-                <th style="width: 22%;">{{ tariff.title }}</th>
-              {% endfor %}
-            </tr>
-          </thead>
-          <tbody>
-            {% for advantage in tariff_advantages %}
-              <tr>
-                <th scope="row" class="text-start">{{ advantage.title }}</th>
-                {% for tariff in tariffs %}
-                  <td>
-                    {% if advantage in tariff.tariff_advantages.all %}
-                      <i class="fa-solid fa-check"></i>
-                    {% endif %}
-                  </td>
+      <div class="collapse" id="tariffsComparing">
+        <div class="bg-glass card p-5">
+          <div class="table-responsive">
+            <table class="table table-dark table-hover text-center">
+              <thead>
+                <tr>
+                  <th class="" style="width: 34%;"></th>
+                  {% for tariff in tariffs %}
+                    <th class="" style="width: 22%;">{{ tariff.title }}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for advantage in tariff_advantages %}
+                  <tr>
+                    <th scope="row" class="text-start ">{{ advantage.title }}</th>
+                    {% for tariff in tariffs %}
+                      <td class="">
+                        {% if advantage in tariff.tariff_advantages.all %}
+                          <i class="fa-solid fa-check"></i>
+                        {% endif %}
+                      </td>
+                    {% endfor %}
+                  </tr>
                 {% endfor %}
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

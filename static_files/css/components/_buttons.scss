@@ -16,12 +16,11 @@
 
     &.btn-glass {
         backdrop-filter: blur(6px);
-        background-color: rgba(255, 255, 255, 0.1);
-        color: $transparent-white;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: $white;
 
         &:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: $white;
+            background-color: rgba(255, 255, 255, 0.3);
         }
     }
 }

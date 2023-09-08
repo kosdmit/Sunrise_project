@@ -1862,7 +1862,7 @@ progress {
   --bs-table-active-color: var(--bs-body-color);
   --bs-table-active-bg: rgba(0, 0, 0, 0.1);
   --bs-table-hover-color: var(--bs-body-color);
-  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.1) !important;
   width: 100%;
   margin-bottom: 1rem;
   vertical-align: top;
@@ -12103,12 +12103,11 @@ body {
 }
 .btn.btn-glass {
   backdrop-filter: blur(6px);
-  background-color: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.5);
-}
-.btn.btn-glass:hover {
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
+}
+.btn.btn-glass:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .masthead {
@@ -12466,12 +12465,23 @@ body {
   }
 }
 
-.pricing-section {
+.pricing-section .bg-glass {
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.pricing-section table td, .pricing-section table th {
+  background-color: transparent;
+  color: white;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.pricing-bg {
   position: relative;
-  padding: 10rem 0;
+  padding-top: 10rem;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%);
 }
-.pricing-section.pricing-bg::before {
+.pricing-bg::before {
   content: "";
   position: absolute;
   top: 0;
