@@ -3,33 +3,6 @@
 // 
 
 .signup-section {
-    position: relative;
-    padding: 10rem 0;
-    background: linear-gradient(to bottom,
-        #{fade-out($black, 0.9)} 0%,
-        #{fade-out($black, 0.5)} 75%,
-        $black 100%);
-
-
-    // Grayscale filter for background image
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-
-        background-image: url("/static/img/bg_images/bg-signup.min.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        background-size: cover;
-
-        filter: grayscale(60%);
-    }
-
     .form-signup {
         input {
             box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;

@@ -3,7 +3,33 @@
 // 
 
 .contact-section {
-    padding-top: 5rem;
+    position: relative;
+    padding: 4rem 0;
+    background: linear-gradient(to bottom,
+        $black 0%,
+        #{fade-out($black, 0.9)} 25%,
+        #{fade-out($black, 0.9)} 75%,
+        $black 100%);
+
+
+    // Grayscale filter for background image
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+
+        background-image: url("/static/img/bg_images/bg-signup.min.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-size: cover;
+
+        filter: grayscale(40%) brightness(0.4);
+    }
 
     .card {
         border: 0;
