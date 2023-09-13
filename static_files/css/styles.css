@@ -12020,6 +12020,11 @@ body {
   backdrop-filter: blur(6px);
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.bg-glass-hovered:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 #mainNav {
