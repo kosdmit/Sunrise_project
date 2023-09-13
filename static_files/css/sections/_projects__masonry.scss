@@ -20,6 +20,8 @@ $columns-count: (
 );
 
 @mixin masonry-grid ($columns-count, $grid-item-height) {
+    margin: 0 calc(5% - map-get($spacers, 2));
+
     .grid-sizer,
     .grid-item {
       width: 100% / $columns-count;

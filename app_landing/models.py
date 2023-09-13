@@ -108,7 +108,10 @@ class ProjectImage(CompressImageBeforeSaveMixin, BaseModel):
         ordering = ['ordering', 'num_id']
 
     def __str__(self):
-        return self.caption
+        if self.caption:
+            return self.caption
+        else:
+            return super().__str__()
 
 
 class Order(BaseModel):
