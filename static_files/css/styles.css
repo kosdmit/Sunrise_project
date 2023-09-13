@@ -12016,6 +12016,12 @@ body {
   letter-spacing: 0.0625em;
 }
 
+.bg-glass {
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
 #mainNav {
   min-height: 3.5rem;
   background-color: #f8f9fa;
@@ -12465,11 +12471,6 @@ body {
   }
 }
 
-.pricing-section .bg-glass {
-  backdrop-filter: blur(6px);
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-}
 .pricing-section table td, .pricing-section table th {
   background-color: transparent;
   color: white;
@@ -12501,7 +12502,7 @@ body {
   padding-bottom: 10rem;
 }
 
-.signup-section .form-signup input {
+.contact-section .form-signup input {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1rem 2rem;
   height: auto;
@@ -12511,7 +12512,7 @@ body {
   border: 0;
   text-align: center;
 }
-.signup-section .form-signup .message {
+.contact-section .form-signup .message {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
