@@ -1,12 +1,13 @@
 import os
 
 from django.views.generic import ListView
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 import sunrise_project.settings as settings
 from app_landing.models import Project, Order, Tariff, TariffAdvantage
+from app_landing.serializers import ProjectSerializer
 from app_landing.services import TelegramNotificationManager, \
     CallbackMessageConstructor
 
@@ -29,6 +30,11 @@ class MainView(ListView):
         context['tariff_advantages'] = TariffAdvantage.objects.all()
 
         return context
+
+
+class ProjectListAPIView(generics.ListAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
 
 
 class OrderCreateView(APIView):
