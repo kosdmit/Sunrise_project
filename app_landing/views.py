@@ -21,7 +21,7 @@ notification_manager = TelegramNotificationManager(
 class MainView(ListView):
     template_name = 'index.html'
     model = Project
-    paginate_by = 6
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

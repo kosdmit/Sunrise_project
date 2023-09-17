@@ -6117,7 +6117,7 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 5%;
+  width: 15%;
   padding: 0;
   color: #fff;
   text-align: center;
@@ -6184,9 +6184,9 @@ textarea.form-control-lg {
   display: flex;
   justify-content: center;
   padding: 0;
-  margin-right: 5%;
+  margin-right: 15%;
   margin-bottom: 1rem;
-  margin-left: 5%;
+  margin-left: 15%;
 }
 .carousel-indicators [data-bs-target] {
   box-sizing: content-box;
@@ -12282,7 +12282,6 @@ body {
 }
 @media (max-width: 575px) {
   .projects-section .masonry-grid {
-    margin: 0 calc(5% - 0.5rem);
     /* This sets the height to be equal to the width */
   }
   .projects-section .masonry-grid .grid-sizer,
@@ -12339,9 +12338,6 @@ body {
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
-  .projects-section .masonry-grid {
-    margin: 0 calc(5% - 0.5rem);
-  }
   .projects-section .masonry-grid .grid-sizer,
   .projects-section .masonry-grid .grid-item {
     width: 100%;
@@ -12380,9 +12376,6 @@ body {
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .projects-section .masonry-grid {
-    margin: 0 calc(5% - 0.5rem);
-  }
   .projects-section .masonry-grid .grid-sizer,
   .projects-section .masonry-grid .grid-item {
     width: 50%;
@@ -12408,9 +12401,6 @@ body {
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  .projects-section .masonry-grid {
-    margin: 0 calc(5% - 0.5rem);
-  }
   .projects-section .masonry-grid .grid-sizer,
   .projects-section .masonry-grid .grid-item {
     width: 33.3333333333%;
@@ -12436,9 +12426,6 @@ body {
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
-  .projects-section .masonry-grid {
-    margin: 0 calc(5% - 0.5rem);
-  }
   .projects-section .masonry-grid .grid-sizer,
   .projects-section .masonry-grid .grid-item {
     width: 33.3333333333%;
@@ -12464,9 +12451,6 @@ body {
   }
 }
 @media (min-width: 1400px) {
-  .projects-section .masonry-grid {
-    margin: 0 calc(5% - 0.5rem);
-  }
   .projects-section .masonry-grid .grid-sizer,
   .projects-section .masonry-grid .grid-item {
     width: 25%;

@@ -12,8 +12,15 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid mx-4 mx-lg-0 p-0">
-    {% include 'elements/carousel.html' %}
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="masonry-grid">
+      <div class="grid-sizer"></div>
+      {% for project in page_obj %}
+        <div class="grid-item {% if project.is_featured %}grid-item--width2{% endif %}">
+          {% include 'sections/projects__card.html' %}
+        </div>
+      {% endfor %}
+    </div>
     <div class="d-flex justify-content-center mt-3">
       {% include 'elements/pagination.html' %}
     </div>
