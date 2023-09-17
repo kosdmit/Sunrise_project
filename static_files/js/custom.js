@@ -59,14 +59,19 @@ $(document).ready(function () {
 
 
   // Masonry Grid activation
-  var $masonryGrid = $('.masonry-grid').imagesLoaded( function() {
-    // init Masonry after all images have loaded
-    $masonryGrid.masonry({
-      // options
+  let $masonryGrid = $('.masonry-grid').masonry({
       itemSelector: '.grid-item',
       columnWidth: '.grid-sizer',
       percentPosition: true,
-    });
+  });
+  // get Masonry instance
+  let msnry = $masonryGrid.data('masonry');
+
+  // init Infinite Scroll
+  $masonryGrid.infiniteScroll({
+    path: '?page={{#}}',
+    append: '.grid-item',
+    outlayer: msnry,
   });
 
 });
