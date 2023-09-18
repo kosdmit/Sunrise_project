@@ -98,8 +98,9 @@ class ProjectImage(CompressImageBeforeSaveMixin, BaseModel):
     project = models.ForeignKey('Project', on_delete=models.CASCADE,
                                 related_name='images', verbose_name=_('project'))
     image = models.ImageField(upload_to='images/project_images/', verbose_name=_('image'))
-    caption = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('caption'))
-    slug = AutoSlugField(populate_from='caption', unique=True)
+    title = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('title'))
+    description = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('description'))
+    slug = AutoSlugField(populate_from='title', unique=True)
     ordering = models.IntegerField(default=0, verbose_name=_('ordering'))
 
     class Meta:

@@ -1,0 +1,36 @@
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    {% for project_image in project.images.all %}
+      <button type="button" data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="{{ forloop.counter0 }}"
+              class="{% if forloop.first %}active{% endif %}"
+              aria-current="true" aria-label="Slide {{ forloop.counter }}">
+      </button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner rounded-top-2">
+    {% for project_image in project.images.all %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <img src="{{ project_image.image.url }}" class="d-block w-100" alt="{{ project_image.caption }}">
+        {% if project_image.title or project_image.description %}
+        <div class="carousel-caption d-none d-md-block">
+          {% if project_image.title %}
+            <h5>{{ project_image.title }}</h5>
+          {% endif %}
+          {% if project_image.description %}
+            <p>{{ project_image.description }}</p>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

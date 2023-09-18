@@ -1,0 +1,17 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-glass bg-glass-matt shadow-lg">
+      {% include 'elements/carousel.html' %}
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ project.title }}</h1>
+      </div>
+      <div class="modal-body">
+        {{ project.description }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-standard" data-bs-dismiss="modal">Закрыть</button>
+        <button type="button" name="goTariffsButton" class="btn btn-primary btn-standard">Перейти к стоимости</button>
+      </div>
+    </div>
+  </div>
+</div>

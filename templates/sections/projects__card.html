@@ -4,7 +4,10 @@
     <div class="hidden-text">
       {% if project.is_featured %}
         <p class="card-text">{{ project.description }}</p>
-        <a class="text-white">Подробнее</a>
+        <button type="button" class="btn btn-link shadow-none text-white"
+                data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Подробнее
+        </button>
       {% endif %}
     </div>
     <div class="visible-text-text">

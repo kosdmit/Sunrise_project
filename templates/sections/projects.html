@@ -18,6 +18,7 @@
       {% for project in page_obj %}
         <div class="grid-item {% if project.is_featured %}grid-item--width2{% endif %}">
           {% include 'sections/projects__card.html' %}
+          {% include 'elements/modal.html' %}
         </div>
       {% endfor %}
     </div>
