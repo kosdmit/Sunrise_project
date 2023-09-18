@@ -5,7 +5,7 @@
       {% if project.is_featured %}
         <p class="card-text">{{ project.description }}</p>
         <button type="button" class="btn btn-link shadow-none text-white"
-                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                data-bs-toggle="modal" data-bs-target="#{{ project.slug }}-modal">
           Подробнее
         </button>
       {% endif %}
