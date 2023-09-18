@@ -63,15 +63,25 @@ $(document).ready(function () {
       itemSelector: '.grid-item',
       columnWidth: '.grid-sizer',
       percentPosition: true,
+      // nicer reveal transition
+      visibleStyle: { transform: 'translateY(0)', opacity: 1 },
+      hiddenStyle: { transform: 'translateY(100px)', opacity: 0 },
   });
   // get Masonry instance
   let msnry = $masonryGrid.data('masonry');
 
   // init Infinite Scroll
   $masonryGrid.infiniteScroll({
-    path: '?page={{#}}',
+    path: '.next-page-link',
     append: '.grid-item',
     outlayer: msnry,
+    scrollThreshold: false,
+    history: false,
+    hideNav: '.pagination',
+    status: '.page-load-status',
+    button: '.view-more-button',
+    debug: true,
+
   });
 
 });

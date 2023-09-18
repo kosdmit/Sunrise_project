@@ -23,4 +23,15 @@
             background-color: rgba(255, 255, 255, 0.3);
         }
     }
+
+    &.btn-glass-gray {
+        backdrop-filter: blur(6px);
+        background-color: rgba(0, 0, 0, 0.1);
+        color: $black;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    }
+
 }

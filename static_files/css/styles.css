@@ -12120,6 +12120,14 @@ body {
 .btn.btn-glass:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
+.btn.btn-glass-gray {
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+.btn.btn-glass-gray:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
 
 .masthead {
   position: relative;
