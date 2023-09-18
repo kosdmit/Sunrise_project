@@ -98,7 +98,7 @@ $(document).ready(function () {
         $("html, body").animate({
           scrollTop: $("#tariffs").offset().top
         }, 0); // The "0" is the duration in milliseconds it will take to scroll to the section.
-      });
+      }, { once: true }); // This ensures the listener is removed after being executed once
 
     });
   });
