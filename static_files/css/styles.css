@@ -12032,6 +12032,10 @@ body {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+.card-clickable {
+  cursor: pointer;
+}
+
 #mainNav {
   min-height: 3.5rem;
   background-color: #f8f9fa;
@@ -12119,6 +12123,9 @@ body {
 }
 .btn:not(.shadow-none) {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+}
+.btn.base-order-button {
+  box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.2), 2px 2px 5px rgba(0, 0, 0, 0.2) !important;
 }
 .btn.btn-glass {
   backdrop-filter: blur(6px);
