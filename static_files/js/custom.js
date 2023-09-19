@@ -109,4 +109,41 @@ $(document).ready(function () {
     addTariffsButton()
   });
 
+
+  // Set fixed background image size for prising section
+  function setFixedBackground () {
+    console.log($(window).width())
+    let $pricingContainer = $('#tariffs div.pricing-bg');
+    let containerHeight = $pricingContainer.innerHeight();
+    console.log(containerHeight)
+    if ($(window).width() < 992) {
+      $pricingContainer.css(
+          'background',
+          `linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) calc(${containerHeight}px - 25%), rgb(0,0,0) ${containerHeight}px, rgb(0,0,0) 100%)`);
+      let styleContent = `
+          #tariffs div.pricing-bg::before {
+              background-position: top;
+              background-size: auto ${containerHeight}px;
+          }
+      `;
+      $('<style>').text(styleContent).appendTo('head');
+    } else {
+      $pricingContainer.css(
+          'background',
+          `linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 75%, rgb(0,0,0) 100%)`);
+      let styleContent = `
+          #tariffs div.pricing-bg::before {
+              background-position: center;
+              background-size: cover;
+          }
+      `;
+      $('<style>').text(styleContent).appendTo('head');
+    }
+
+  }
+  setFixedBackground();
+  $(window).resize(function() {
+    setFixedBackground();
+  });
+
 });

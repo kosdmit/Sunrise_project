@@ -39,9 +39,9 @@ class ParameterInlineAdmin(admin.TabularInline):
     extra = 1
 
 
-class ProjectImageInlineAdmin(admin.TabularInline):
+class ProjectImageInlineAdmin(admin.StackedInline):
     model = ProjectImage
-    fields = ('ordering', 'image', 'image_preview', 'caption')
+    fields = ('ordering', ('image', 'image_preview'), ('title', 'description'))
     readonly_fields = ('image_preview',)
     ordering = ('ordering', 'num_id')
     extra = 1
@@ -128,6 +128,7 @@ class TariffAdmin(BaseAdminMixin, admin.ModelAdmin):
 
     def get_fieldsets(self, request, obj=None):
         fieldsets = super().get_fieldsets(request, obj)
+        fieldsets[1][1]['fields'].append('slug')
         fieldsets += [
             (None, {"fields": ["title",
                                ("price_prefix", "price"),
@@ -137,6 +138,14 @@ class TariffAdmin(BaseAdminMixin, admin.ModelAdmin):
         ]
 
         return fieldsets
+
+    def get_readonly_fields(self, request, obj=None):
+        readonly_fields = super().get_readonly_fields(request, obj)
+        readonly_fields += [
+            'slug',
+        ]
+
+        return readonly_fields
 
 
 @admin.register(TariffAdvantage)

@@ -109,8 +109,8 @@ class ProjectImage(CompressImageBeforeSaveMixin, BaseModel):
         ordering = ['ordering', 'num_id']
 
     def __str__(self):
-        if self.caption:
-            return self.caption
+        if self.title:
+            return self.title
         else:
             return super().__str__()
 
@@ -145,6 +145,7 @@ class Order(BaseModel):
 
 class Tariff(BaseModel):
     title = models.CharField(max_length=150, verbose_name=_('title'))
+    slug = AutoSlugField(populate_from='title',)
     price = models.IntegerField(verbose_name=_('price'))
     price_prefix = models.BooleanField(default=False, verbose_name=_('price prefix'))
     description = models.TextField(verbose_name=_('description'), null=True, blank=True)

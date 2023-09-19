@@ -6,10 +6,20 @@
     </div>
     <div class="card-body d-flex flex-column">
       <h1 class="card-title pricing-card-title">{{ tariff.price }}<small class="text-white-50 fw-light"> ₽/м²</small></h1>
-      <p class="mt-3 mt-auto">{{ tariff.description }}</p>
-      <button type="button" class="mt-auto w-100 btn btn-lg btn-outline-primary mb-1 shadow-none">
+      <p class="mb-auto pb-4">{{ tariff.description }}</p>
+      <button type="button"
+              class="d-lg-none mt-auto w-100 btn btn-lg btn-outline-primary mb-1 shadow-none"
+              data-bs-toggle="collapse" data-bs-target="#{{ tariff.slug }}-collapse"
+              aria-expanded="false" aria-controls="{{ tariff.slug }}-collapse">
         Подробнее
       </button>
+      <div class="collapse" id="{{ tariff.slug }}-collapse">
+        <ul>
+          {% for advantage in tariff.tariff_advantages.all %}
+            <li>{{ advantage }}</li>
+          {% endfor %}
+        </ul>
+      </div>
       <button type="button" class="w-100 btn btn-lg
               {% if forloop.last %}btn-black {% elif not forloop.first %}btn-primary{% else %}btn-outline-primary base-order-button{% endif %}">
         Заказать
