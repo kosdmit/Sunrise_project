@@ -86,21 +86,27 @@ $(document).ready(function () {
 
 
   // goTariffsButton functionality
-  $('button[name="goTariffsButton"]').each(function () {
-    let button = $(this);
-    let modalElement = button.closest('.modal')[0];
-    let modal = new bootstrap.Modal(modalElement);
+  function addTariffsButton () {
+    $('button[name="goTariffsButton"]').each(function () {
+      let button = $(this);
+      let modalElement = button.closest('.modal')[0];
+      let modal = new bootstrap.Modal(modalElement);
 
-    button.click(function() {
-      modal.hide();
-      modalElement.addEventListener('hidden.bs.modal', function(event) {
-        // Scroll to the desired section
-        $("html, body").animate({
-          scrollTop: $("#tariffs").offset().top
-        }, 0); // The "0" is the duration in milliseconds it will take to scroll to the section.
-      }, { once: true }); // This ensures the listener is removed after being executed once
+      button.click(function () {
+        modal.hide();
+        modalElement.addEventListener('hidden.bs.modal', function (event) {
+          // Scroll to the desired section
+          $("html, body").animate({
+            scrollTop: $("#tariffs").offset().top
+          }, 0); // The "0" is the duration in milliseconds it will take to scroll to the section.
+        }, {once: true}); // This ensures the listener is removed after being executed once
 
+      });
     });
+  }
+  addTariffsButton()
+  $masonryGrid.on( 'append.infiniteScroll', function( event, body, path, items, response ) {
+    addTariffsButton()
   });
 
 });
