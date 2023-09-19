@@ -1,4 +1,5 @@
-<div class="card text-bg-dark rounded-0 border-0">
+<div class="card card-clickable text-bg-dark rounded-0 border-0"
+     data-bs-toggle="modal" data-bs-target="#{{ project.slug }}-modal">
   <img src="{{ project.images.first.image.url }}" class="card-img rounded-0 fit-cover" alt="...">
   <div class="card-img-overlay {% if not project.is_featured %}small-overlay{% endif %}">
     <div class="hidden-text">
