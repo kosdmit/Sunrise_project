@@ -3414,7 +3414,7 @@ textarea.form-control-lg {
   --bs-dropdown-border-radius: var(--bs-border-radius);
   --bs-dropdown-border-width: var(--bs-border-width);
   --bs-dropdown-inner-border-radius: calc(var(--bs-border-radius) - var(--bs-border-width));
-  --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
+  --bs-dropdown-divider-bg: rgba(255, 255, 255, 0.175);
   --bs-dropdown-divider-margin-y: 0.5rem;
   --bs-dropdown-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --bs-dropdown-link-color: var(--bs-body-color);
@@ -3684,7 +3684,7 @@ textarea.form-control-lg {
   --bs-dropdown-box-shadow: ;
   --bs-dropdown-link-color: #dee2e6;
   --bs-dropdown-link-hover-color: #fff;
-  --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
+  --bs-dropdown-divider-bg: rgba(255, 255, 255, 0.175);
   --bs-dropdown-link-hover-bg: rgba(255, 255, 255, 0.15);
   --bs-dropdown-link-active-color: #fff;
   --bs-dropdown-link-active-bg: #fcd68b;
@@ -12539,6 +12539,12 @@ body {
 
 #tariffsComparingSection {
   padding-bottom: 10rem;
+}
+
+[name=tariffAdvantages] {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.1), inset 2px 2px 3px rgba(0, 0, 0, 0.05) !important;
 }
 
 button[name=detailsButton] {

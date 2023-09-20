@@ -14,9 +14,14 @@
         Подробнее <i class="fa-solid fa-angles-down"></i>
       </button>
       <div class="collapse d-lg-none" id="{{ tariff.slug }}-collapse">
-        <ul>
+        <ul class="dropdown-menu position-static d-grid gap-3 p-3 rounded-2 mx-0 mb-3 border-0"
+            name="tariffAdvantages">
+          <div>
+            <p class="m-0">Тариф включает:</p>
+            <hr class="dropdown-divider">
+          </div>
           {% for advantage in tariff.tariff_advantages.all %}
-            <li>{{ advantage }}</li>
+            <li class="fw-lighter">{{ advantage }}</li>
           {% endfor %}
         </ul>
       </div>
