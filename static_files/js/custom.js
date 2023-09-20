@@ -148,7 +148,7 @@ $(document).ready(function () {
 
 
   // Animation for detailButton of pricing cards
-  $('button[name="detailsButton"]').each(function () {
+  $('button[name="detailsButton"], button[data-bs-target="#tariffsComparing"]').each(function () {
     $(this).click(function () {
       let $icon = $(this).children('svg')
       // Get current rotation state. If undefined, set to 0.

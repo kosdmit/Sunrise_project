@@ -13,7 +13,7 @@
               aria-expanded="false" aria-controls="{{ tariff.slug }}-collapse">
         Подробнее <i class="fa-solid fa-angles-down"></i>
       </button>
-      <div class="collapse" id="{{ tariff.slug }}-collapse">
+      <div class="collapse d-lg-none" id="{{ tariff.slug }}-collapse">
         <ul>
           {% for advantage in tariff.tariff_advantages.all %}
             <li>{{ advantage }}</li>
