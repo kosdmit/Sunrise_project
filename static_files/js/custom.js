@@ -146,4 +146,22 @@ $(document).ready(function () {
     setFixedBackground();
   });
 
+
+  // Animation for detailButton of pricing cards
+  $('button[name="detailsButton"]').each(function () {
+    $(this).click(function () {
+      let $icon = $(this).children('svg')
+      // Get current rotation state. If undefined, set to 0.
+      let currentRotation = $(this).data('rotation') || 0;
+      // Toggle between 0 and 180 degrees.
+      let newRotation = (currentRotation == 0) ? 180 : 0;
+      $icon.css({
+          "transform": "rotate(" + newRotation + "deg)",
+          "transition": "0.35s ease"
+      });
+      // Store the new rotation state.
+      $(this).data('rotation', newRotation);
+    })
+  })
+
 });

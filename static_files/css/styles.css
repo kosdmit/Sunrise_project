@@ -12541,6 +12541,11 @@ body {
   padding-bottom: 10rem;
 }
 
+button[name=detailsButton] {
+  background-color: inherit !important;
+  color: #b5ae8f !important;
+}
+
 .contact-section .form-signup input {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1rem 2rem;

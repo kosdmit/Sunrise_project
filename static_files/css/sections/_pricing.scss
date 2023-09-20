@@ -41,3 +41,9 @@
 #tariffsComparingSection {
     padding-bottom: 10rem;
 }
+
+
+button[name='detailsButton'] {
+    background-color: inherit !important;
+    color: $secondary !important;
+}

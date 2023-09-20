@@ -7,11 +7,11 @@
     <div class="card-body d-flex flex-column">
       <h1 class="card-title pricing-card-title">{{ tariff.price }}<small class="text-white-50 fw-light"> ₽/м²</small></h1>
       <p class="mb-auto pb-4">{{ tariff.description }}</p>
-      <button type="button"
+      <button type="button" name="detailsButton"
               class="d-lg-none mt-auto w-100 btn btn-lg btn-outline-primary mb-1 shadow-none"
               data-bs-toggle="collapse" data-bs-target="#{{ tariff.slug }}-collapse"
               aria-expanded="false" aria-controls="{{ tariff.slug }}-collapse">
-        Подробнее
+        Подробнее <i class="fa-solid fa-angles-down"></i>
       </button>
       <div class="collapse" id="{{ tariff.slug }}-collapse">
         <ul>
