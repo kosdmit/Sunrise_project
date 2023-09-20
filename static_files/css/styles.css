@@ -12552,6 +12552,10 @@ button[name=detailsButton] {
   color: #b5ae8f !important;
 }
 
+h1.card-title, .card-title.h1 {
+  font-size: calc(1.375rem + 1.5vw - 3px);
+}
+
 .contact-section .form-signup input {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1rem 2rem;

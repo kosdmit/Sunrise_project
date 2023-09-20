@@ -54,3 +54,7 @@ button[name='detailsButton'] {
     background-color: inherit !important;
     color: $secondary !important;
 }
+
+h1.card-title {
+    font-size: calc(1.375rem + 1.5vw - 3px);
+}

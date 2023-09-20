@@ -123,7 +123,8 @@ class OrderAdmin(BaseAdminMixin, admin.ModelAdmin):
 
 @admin.register(Tariff)
 class TariffAdmin(BaseAdminMixin, admin.ModelAdmin):
-    list_display = ['num_id', 'title', 'price', 'is_featured', ]
+    ordering = ['price', 'num_id']
+    list_display = ['num_id', 'title', 'price', ]
     list_display_links = ['title']
 
     def get_fieldsets(self, request, obj=None):
@@ -133,8 +134,7 @@ class TariffAdmin(BaseAdminMixin, admin.ModelAdmin):
             (None, {"fields": ["title",
                                ("price_prefix", "price"),
                                "description",
-                               "tariff_advantages",
-                               "is_featured"]}),
+                               "tariff_advantages"]}),
         ]
 
         return fieldsets
@@ -146,6 +146,12 @@ class TariffAdmin(BaseAdminMixin, admin.ModelAdmin):
         ]
 
         return readonly_fields
+
+    def has_add_permission(self, request):
+        if Tariff.objects.count() >= 3:
+            return False
+        else:
+            return True
 
 
 @admin.register(TariffAdvantage)
@@ -162,18 +168,3 @@ class TariffAdvantageAdmin(BaseAdminMixin, admin.ModelAdmin):
 
         return fieldsets
 
-
-
-# This object was added in ProjectAdmin like an TabularInline
-# @admin.register(Parameter)
-# class ParameterAdmin(BaseAdminMixin, admin.ModelAdmin):
-#     list_display = ['num_id', 'title', 'value', 'created_date', 'updated_date']
-#     list_display_links = ['title']
-#
-#     def get_fieldsets(self, request, obj=None):
-#         fieldsets = super().get_fieldsets(request, obj)
-#         fieldsets += [
-#             (None, {"fields": ["title", "value", "project"]}),
-#         ]
-#
-#         return fieldsets

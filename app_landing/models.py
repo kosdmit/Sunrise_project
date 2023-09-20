@@ -2,6 +2,7 @@ import uuid
 
 from autoslug import AutoSlugField
 from django.contrib.auth import get_user_model
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _, gettext
 
@@ -101,7 +102,9 @@ class ProjectImage(CompressImageBeforeSaveMixin, BaseModel):
     title = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('title'))
     description = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('description'))
     slug = AutoSlugField(populate_from='title', unique=True)
-    ordering = models.IntegerField(default=0, verbose_name=_('ordering'))
+    ordering = models.IntegerField(default=0,
+                                   verbose_name=_('ordering'),
+                                   help_text=_("This parameter is used in ascending order to sort objects"))
 
     class Meta:
         verbose_name = _('project image')
@@ -144,31 +147,35 @@ class Order(BaseModel):
 
 
 class Tariff(BaseModel):
-    title = models.CharField(max_length=150, verbose_name=_('title'))
-    slug = AutoSlugField(populate_from='title',)
-    price = models.IntegerField(verbose_name=_('price'))
-    price_prefix = models.BooleanField(default=False, verbose_name=_('price prefix'))
+    title = models.CharField(max_length=16,
+                             verbose_name=_('title'),
+                             help_text=_("The maximum length is 16 characters"))
+    slug = AutoSlugField(populate_from='title', unique=True)
+    price = models.IntegerField(verbose_name=_('price'),
+                                validators=[MinValueValidator(0), MaxValueValidator(99999)],
+                                help_text=_("Value in the range from 0 to 99999"))
+    price_prefix = models.BooleanField(default=False,
+                                       verbose_name=_('price prefix'),
+                                       help_text=_("Adds the preposition 'from' before the price"))
     description = models.TextField(verbose_name=_('description'), null=True, blank=True)
     tariff_advantages = models.ManyToManyField('TariffAdvantage', verbose_name=_('tariff advantages'))
-    is_featured = models.BooleanField(verbose_name=_('is featured tariff'), default=False)
-
-    def save(self, *args, **kwargs):
-        if self.is_featured:
-            self.__class__.objects.filter(is_featured=True).update(is_featured=False)
-
-        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = _('tariff')
         verbose_name_plural = _('tariffs')
+        ordering = ['price', 'num_id']
 
     def __str__(self):
         return self.title
 
 
 class TariffAdvantage(BaseModel):
-    title = models.CharField(max_length=150, verbose_name=_('title'))
-    ordering = models.IntegerField(default=0, verbose_name=_('ordering'))
+    title = models.CharField(max_length=50,
+                             verbose_name=_('title'),
+                             help_text=_("The maximum length is 50 characters"))
+    ordering = models.IntegerField(default=0,
+                                   verbose_name=_('ordering'),
+                                   help_text=_("This parameter is used in ascending order to sort objects"))
 
     class Meta:
         verbose_name = _('tariff advantage')

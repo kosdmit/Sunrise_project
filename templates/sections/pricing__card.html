@@ -5,7 +5,10 @@
       <h4 class="my-0 fw-normal">{{ tariff.title }}</h4>
     </div>
     <div class="card-body d-flex flex-column">
-      <h1 class="card-title pricing-card-title">{{ tariff.price }}<small class="text-white-50 fw-light"> ₽/м²</small></h1>
+      <h1 class="card-title pricing-card-title">
+        {% if tariff.price_prefix %}<small class="text-white-50 fw-light">от </small>{% endif %}
+        {{ tariff.price }}<small class="text-white-50 fw-light"> ₽/м²</small>
+      </h1>
       <p class="mb-auto pb-4">{{ tariff.description }}</p>
       <button type="button" name="detailsButton"
               class="d-lg-none mt-auto w-100 btn btn-lg btn-outline-primary mb-1 shadow-none"
