@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-20 22:33+0400\n"
+"POT-Creation-Date: 2023-09-26 14:38+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,148 +60,156 @@ msgstr "дата изменения"
 msgid "is active"
 msgstr "активно?"
 
-#: .\models.py:46 .\models.py:68 .\models.py:82 .\models.py:102 .\models.py:149
-#: .\models.py:172
+#: .\models.py:47 .\models.py:70 .\models.py:84 .\models.py:104 .\models.py:153
+#: .\models.py:176
 msgid "title"
 msgstr "название"
 
-#: .\models.py:49 .\models.py:72
+#: .\models.py:48
+msgid "The maximum length is "
+msgstr "Максимальная длина - "
+
+#: .\models.py:48
+msgid " characters"
+msgstr " символов"
+
+#: .\models.py:51 .\models.py:74
 msgid "category"
 msgstr "категория"
 
-#: .\models.py:50 .\models.py:103 .\models.py:158
+#: .\models.py:52 .\models.py:105 .\models.py:162
 msgid "description"
 msgstr "описание"
 
-#: .\models.py:51
+#: .\models.py:53
 msgid "is featured project"
 msgstr "избранный проект?"
 
-#: .\models.py:60 .\models.py:80 .\models.py:100
+#: .\models.py:62 .\models.py:82 .\models.py:102
 msgid "project"
 msgstr "проект"
 
-#: .\models.py:61
+#: .\models.py:63
 msgid "projects"
 msgstr "проекты"
 
-#: .\models.py:73
+#: .\models.py:75
 msgid "categories"
 msgstr "категории"
 
-#: .\models.py:83
+#: .\models.py:85
 msgid "value"
 msgstr "значение"
 
-#: .\models.py:86
+#: .\models.py:88
 msgid "parameter"
 msgstr "параметр"
 
-#: .\models.py:87
+#: .\models.py:89
 msgid "parameters"
 msgstr "параметры"
 
-#: .\models.py:101
+#: .\models.py:103
 msgid "image"
 msgstr "изображение"
 
-#: .\models.py:105 .\models.py:175
+#: .\models.py:108 .\models.py:179
 msgid "ordering"
 msgstr "порядок"
 
-#: .\models.py:108
-msgid "project image"
-msgstr "иллюстрация проекта"
-
-#: .\models.py:109
-msgid "project images"
-msgstr "иллюстрации проекта"
-
-#: .\models.py:121
-msgid "new request"
-msgstr "новый запрос"
-
-#: .\models.py:122
-msgid "in progress"
-msgstr "в работе"
-
-#: .\models.py:123
-msgid "closed"
-msgstr "завершено"
-
-#: .\models.py:124
-msgid "in production"
-msgstr "продакшн"
-
-#: .\models.py:125
-msgid "success sell"
-msgstr "успешная продажа"
-
-#: .\models.py:130
-msgid "customer name"
-msgstr "имя клиента"
-
-#: .\models.py:133
-msgid "phone number"
-msgstr "номер телефона"
-
-#: .\models.py:135
-msgid "status"
-msgstr "статус"
-
-#: .\models.py:136
-msgid "notes"
-msgstr "заметки"
-
-#: .\models.py:139
-msgid "order"
-msgstr "Запрос"
-
-#: .\models.py:140
-msgid "orders"
-msgstr "Запросы"
-
-#: .\models.py:150
-msgid "The maximum length is 16 characters"
-msgstr "Максимальная длина - 16 символов"
-
-#: .\models.py:152
-msgid "price"
-msgstr "цена"
-
-#: .\models.py:154
-msgid "Value in the range from 0 to 99999"
-msgstr "Значение в диапазоне от 0 до 99999"
-
-#: .\models.py:156
-msgid "price prefix"
-msgstr "приставка 'от' к цене"
-
-#: .\models.py:157
-msgid "Adds the preposition 'from' before the price"
-msgstr "Добавляет предлог 'от' перед значением цены"
-
-#: .\models.py:159 .\models.py:180
-msgid "tariff advantages"
-msgstr "услуги"
-
-#: .\models.py:162
-msgid "tariff"
-msgstr "тариф"
-
-#: .\models.py:163
-msgid "tariffs"
-msgstr "тарифы"
-
-#: .\models.py:173
-msgid "The maximum length is 50 characters"
-msgstr "Максимальная длина - 50 символов"
-
-#: .\models.py:176
+#: .\models.py:109 .\models.py:180
 msgid "This parameter is used in ascending order to sort objects"
 msgstr "Этот параметр в порядке возрастания используется для сортировки объектов"
 
-#: .\models.py:179
+#: .\models.py:112
+msgid "project image"
+msgstr "иллюстрация проекта"
+
+#: .\models.py:113
+msgid "project images"
+msgstr "иллюстрации проекта"
+
+#: .\models.py:125
+msgid "new request"
+msgstr "новый запрос"
+
+#: .\models.py:126
+msgid "in progress"
+msgstr "в работе"
+
+#: .\models.py:127
+msgid "closed"
+msgstr "завершено"
+
+#: .\models.py:128
+msgid "in production"
+msgstr "продакшн"
+
+#: .\models.py:129
+msgid "success sell"
+msgstr "успешная продажа"
+
+#: .\models.py:134
+msgid "customer name"
+msgstr "имя клиента"
+
+#: .\models.py:137
+msgid "phone number"
+msgstr "номер телефона"
+
+#: .\models.py:139
+msgid "status"
+msgstr "статус"
+
+#: .\models.py:140
+msgid "notes"
+msgstr "заметки"
+
+#: .\models.py:143
+msgid "order"
+msgstr "Запрос"
+
+#: .\models.py:144
+msgid "orders"
+msgstr "Запросы"
+
+#: .\models.py:154
+msgid "The maximum length is 16 characters"
+msgstr "Максимальная длина - 16 символов"
+
+#: .\models.py:156
+msgid "price"
+msgstr "цена"
+
+#: .\models.py:158
+msgid "Value in the range from 0 to 99999"
+msgstr "Значение в диапазоне от 0 до 99999"
+
+#: .\models.py:160
+msgid "price prefix"
+msgstr "приставка 'от' к цене"
+
+#: .\models.py:161
+msgid "Adds the preposition 'from' before the price"
+msgstr "Добавляет предлог 'от' перед значением цены"
+
+#: .\models.py:163 .\models.py:184
+msgid "tariff advantages"
+msgstr "услуги"
+
+#: .\models.py:166
+msgid "tariff"
+msgstr "тариф"
+
+#: .\models.py:167
+msgid "tariffs"
+msgstr "тарифы"
+
+#: .\models.py:177
+msgid "The maximum length is 50 characters"
+msgstr "Максимальная длина - 50 символов"
+
+#: .\models.py:183
 msgid "tariff advantage"
 msgstr "услуга"
 

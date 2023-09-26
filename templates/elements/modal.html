@@ -1,20 +1,33 @@
 <div class="modal fade" id="{{ project.slug }}-modal" tabindex="-1" aria-labelledby="{{ project.slug }}-modal-label" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-md-down modal-dialog-scrollable">
     <div class="modal-content bg-glass bg-glass-matt">
       {% include 'elements/carousel.html' %}
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="{{ project.slug }}-modal-label">{{ project.title }}</h1>
+      <div class="modal-header px-sm-5 pt-sm-4 px-md-3 px-lg-5">
+        <h1 class="modal-title fs-5" id="{{ project.slug }}-modal-label">
+          {{ project.title }}
+          {% if project.category %}<small class="ms-auto text-white-50 text-nowrap">// {{ project.category }}</small>{% endif %}
+        </h1>
       </div>
-      <div class="modal-body">
-        {{ project.description }}
+      <div class="modal-body ps-sm-5 ps-md-3 ps-lg-5 py-0 pe-2 pe-sm-3 pe-md-2 pe-lg-3">
+        <p class="mb-4">{{ project.description }}</p>
+        {% for param in project.parameter_set.all %}
+          <div class="row" itemprop="description">
+            <dt class="col-6 col-lg-4">{{ param.title }}</dt>
+            <dd class="col-6 col-lg-4">{{ param.value }}</dd>
+          </div>
+         {% endfor %}
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-standard" data-bs-dismiss="modal">
-          Закрыть
-        </button>
-        <button type="button" name="goTariffsButton" class="btn btn-primary btn-standard">
-          Перейти к стоимости
-        </button>
+      <div class="modal-footer justify-content-center justify-content-sm-end">
+        <div class="col-12 col-sm-auto">
+          <button type="button" class="btn btn-secondary btn-standard w-100" data-bs-dismiss="modal">
+            Назад
+          </button>
+        </div>
+        <div class="col-12 col-sm-auto">
+          <button type="button" name="goTariffsButton" class="btn btn-primary btn-standard w-100">
+            Перейти к стоимости
+          </button>
+        </div>
       </div>
     </div>
   </div>

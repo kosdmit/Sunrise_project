@@ -8,7 +8,7 @@
       </button>
     {% endfor %}
   </div>
-  <div class="carousel-inner rounded-top-2">
+  <div class="carousel-inner">
     {% for project_image in project.images.all %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
         <img src="{{ project_image.image.url }}" class="d-block w-100" alt="{{ project_image.caption }}">

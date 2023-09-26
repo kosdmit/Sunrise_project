@@ -12144,6 +12144,36 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+:root {
+  --scrollbarBg: rgba(255, 255, 255, 0.2);
+  --scrollbarThumb: rgba(255, 255, 255, 0.3);
+  --scrollbarWidth: 8px;
+  --scrollbarBorder: 3px solid var(--scrollbarBg);
+  --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 2);
+}
+
+.modal-body {
+  margin-right: 16px;
+}
+
+@media (pointer: fine) {
+  .modal-body {
+    scrollbar-width: var(--scrollbarWidth);
+    scrollbar-color: var(--scrollbarThumb) var(--scrollbarBg);
+  }
+  .modal-body::-webkit-scrollbar {
+    width: var(--scrollbarWidth);
+  }
+  .modal-body::-webkit-scrollbar-track {
+    background: var(--scrollbarBg);
+    border-radius: var(--scrollbarBorderRadius);
+  }
+  .modal-body::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbarThumb);
+    border-radius: var(--scrollbarBorderRadius);
+    border: var(--scrollbarBorder);
+  }
+}
 .masthead {
   position: relative;
   width: 100%;
@@ -12499,6 +12529,12 @@ body {
   }
 }
 
+@media (min-width: 768px) {
+  .modal .carousel .carousel-inner {
+    border-top-left-radius: var(--bs-border-radius);
+    border-top-right-radius: var(--bs-border-radius);
+  }
+}
 .modal .carousel .carousel-item img {
   object-fit: cover;
   object-position: center;

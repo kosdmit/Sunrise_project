@@ -43,18 +43,14 @@ class BaseModel(models.Model):
 
 
 class Project(BaseModel):
-    title = models.CharField(max_length=150, verbose_name=_('title'))
+    title = models.CharField(max_length=24,
+                             verbose_name=_('title'),
+                             help_text=_("The maximum length is ") + "24" + _(" characters"))
     slug = AutoSlugField(populate_from='title', unique=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True,
                                  blank=True, verbose_name=_('category'))
     description = models.TextField(verbose_name=_('description'), null=True, blank=True)
     is_featured = models.BooleanField(verbose_name=_('is featured project'), default=False)
-
-    def save(self, *args, **kwargs):
-        if self.is_featured:
-            self.__class__.objects.filter(is_featured=True).update(is_featured=False)
-
-        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = _('project')
@@ -65,7 +61,10 @@ class Project(BaseModel):
 
 
 class Category(BaseModel):
-    title = models.CharField(max_length=150, verbose_name=_('title'), unique=True)
+    title = models.CharField(max_length=24,
+                             verbose_name=_('title'),
+                             unique=True,
+                             help_text=_("The maximum length is ") + "24" + _(" characters"))
     slug = AutoSlugField(populate_from='title', unique=True)
 
     class Meta:

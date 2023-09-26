@@ -2,11 +2,21 @@
 // Modals for Projects section
 //
 
-.modal .carousel .carousel-item img {
-	object-fit: cover;
-	object-position: center;
-	width: 100%;
-	height: 342px;
+.modal .carousel {
+	.carousel-inner {
+		@media (min-width: 768px) {
+			border-top-left-radius: var(--bs-border-radius);
+			border-top-right-radius: var(--bs-border-radius);
+		}
+	}
+
+
+	.carousel-item img {
+		object-fit: cover;
+		object-position: center;
+		width: 100%;
+		height: 342px;
+	}
 }
 
 .modal-content {
