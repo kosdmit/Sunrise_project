@@ -24,7 +24,11 @@ class BaseModel(models.Model):
     created_date = models.DateTimeField(auto_now_add=True, verbose_name=_('date of creation'))
     updated_date = models.DateTimeField(auto_now=True, verbose_name=_('date of updating'))
 
-    is_active = models.BooleanField(default=False, verbose_name=_('is active'))
+    is_active = models.BooleanField(
+        default=False,
+        verbose_name=_('is active'),
+        help_text=_("If this option is disabled, the object will be unavailable to users"),
+    )
 
     class Meta:
         abstract = True
@@ -43,14 +47,25 @@ class BaseModel(models.Model):
 
 
 class Project(BaseModel):
-    title = models.CharField(max_length=24,
-                             verbose_name=_('title'),
-                             help_text=_("The maximum length is ") + "24" + _(" characters"))
+    title = models.CharField(
+        max_length=24,
+        verbose_name=_('title'),
+        help_text=_("The maximum length is ") + "24" + _(" characters"),
+    )
     slug = AutoSlugField(populate_from='title', unique=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True,
                                  blank=True, verbose_name=_('category'))
     description = models.TextField(verbose_name=_('description'), null=True, blank=True)
-    is_featured = models.BooleanField(verbose_name=_('is featured project'), default=False)
+    is_featured = models.BooleanField(
+        verbose_name=_('is featured project'),
+        default=False,
+        help_text=_("If the option is active the project will have a special display on the site taking up large spaces"),
+    )
+    to_show_download_date = models.BooleanField(
+        verbose_name=_('to show download date'),
+        default=True,
+        help_text=_("If the option is active, the user will see the project update date"),
+    )
 
     class Meta:
         verbose_name = _('project')
@@ -61,10 +76,12 @@ class Project(BaseModel):
 
 
 class Category(BaseModel):
-    title = models.CharField(max_length=24,
-                             verbose_name=_('title'),
-                             unique=True,
-                             help_text=_("The maximum length is ") + "24" + _(" characters"))
+    title = models.CharField(
+        max_length=24,
+        verbose_name=_('title'),
+        unique=True,
+        help_text=_("The maximum length is ") + "24" + _(" characters"),
+    )
     slug = AutoSlugField(populate_from='title', unique=True)
 
     class Meta:
@@ -101,9 +118,11 @@ class ProjectImage(CompressImageBeforeSaveMixin, BaseModel):
     title = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('title'))
     description = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('description'))
     slug = AutoSlugField(populate_from='title', unique=True)
-    ordering = models.IntegerField(default=0,
-                                   verbose_name=_('ordering'),
-                                   help_text=_("This parameter is used in ascending order to sort objects"))
+    ordering = models.IntegerField(
+        default=0,
+        verbose_name=_('ordering'),
+        help_text=_("This parameter is used in ascending order to sort objects"),
+    )
 
     class Meta:
         verbose_name = _('project image')

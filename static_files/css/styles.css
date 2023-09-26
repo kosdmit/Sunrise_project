@@ -12294,7 +12294,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px) brightness(0.7);
   clip-path: polygon(0 calc(100% - 88px), 100% calc(100% - 88px), 100% 100%, 0% 100%);
   transition: all 0.5s;
 }
@@ -12318,6 +12318,38 @@ body {
   margin: 0 auto;
   color: white;
 }
+@media (max-width: 575px) {
+  .projects-section .hidden-text {
+    width: 100%;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .projects-section .hidden-text {
+    width: 80%;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .projects-section .hidden-text {
+    width: 70%;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .projects-section .hidden-text {
+    width: 60%;
+  }
+}
+@media (min-width: 1400px) {
+  .projects-section .hidden-text {
+    width: 70%;
+  }
+}
+.projects-section .hidden-text p.card-text {
+  display: -webkit-box; /* используется для поддержки старых версий WebKit */
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .projects-section .visible-text {
   flex: 0 0 100px;
   width: 100%;
@@ -12327,6 +12359,9 @@ body {
   text-transform: uppercase;
   font-size: 2rem;
   color: white;
+}
+.projects-section .visible-text-text .card-text {
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .projects-section .masonry-grid {

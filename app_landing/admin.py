@@ -69,7 +69,12 @@ class ProjectAdmin(BaseAdminMixin, admin.ModelAdmin):
         fieldsets = super().get_fieldsets(request, obj)
         fieldsets[1][1]['fields'].append('slug')
         fieldsets += [
-            (None, {"fields": ["title", "category", "description", 'is_active', 'is_featured']},),
+            (None, {"fields": [
+                "title",
+                "category",
+                "description",
+                ('is_active', 'is_featured', 'to_show_download_date'),
+            ]},),
         ]
 
         return fieldsets

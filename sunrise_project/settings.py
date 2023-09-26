@@ -68,6 +68,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'app_landing.context_processors.add_order_create_form',
             ],
+            'libraries': {
+                'custom_tags': 'app_landing.templatetags.custom_tags'
+            }
         },
     },
 ]
