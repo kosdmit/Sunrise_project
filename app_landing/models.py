@@ -11,8 +11,11 @@ from app_landing.validators import phone_number_validator
 
 # Create your models here.
 User = get_user_model()
+
+
 class BaseModel(models.Model):
-    uuid = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4,
+    uuid = models.UUIDField(primary_key=True, editable=False,
+                            default=uuid.uuid4,
                             unique=True, verbose_name=_('unique identifier'))
     num_id = models.IntegerField(unique=True, editable=False, verbose_name=_('#'))
 
@@ -95,8 +98,16 @@ class Category(BaseModel):
 class Parameter(BaseModel):
     project = models.ForeignKey('Project', verbose_name=_('project'), on_delete=models.CASCADE)
 
-    title = models.CharField(max_length=150, verbose_name=_('title'))
-    value = models.CharField(max_length=150, verbose_name=_('value'))
+    title = models.CharField(
+        max_length=25,
+        verbose_name=_('title'),
+        help_text=_("The maximum length is ") + "25" + _(" characters"),
+    )
+    value = models.CharField(
+        max_length=40,
+        verbose_name=_('value'),
+        help_text=_("The maximum length is ") + "40" + _(" characters"),
+    )
 
     class Meta:
         verbose_name = _('parameter')
@@ -115,8 +126,22 @@ class ProjectImage(CompressImageBeforeSaveMixin, BaseModel):
     project = models.ForeignKey('Project', on_delete=models.CASCADE,
                                 related_name='images', verbose_name=_('project'))
     image = models.ImageField(upload_to='images/project_images/', verbose_name=_('image'))
-    title = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('title'))
-    description = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('description'))
+    title = models.CharField(
+        max_length=45,
+        null=True,
+        blank=True,
+        verbose_name=_('title'),
+        help_text=_("The maximum length is ") + "45" + _(" characters") +
+                  _(". This text will be displayed only on desktop screens"),
+    )
+    description = models.CharField(
+        max_length=110,
+        null=True,
+        blank=True,
+        verbose_name=_('description'),
+        help_text=_("The maximum length is ") + "110" + _(" characters") +
+                  _(". This text will be displayed only on desktop screens"),
+    )
     slug = AutoSlugField(populate_from='title', unique=True)
     ordering = models.IntegerField(
         default=0,
@@ -147,12 +172,15 @@ class Order(BaseModel):
 
     DEFAULT_STATUS = STATUSES[0][0]
 
-    customer_name = models.CharField(max_length=150, verbose_name=_('customer name'), null=True, blank=True)
+    customer_name = models.CharField(max_length=150,
+                                     verbose_name=_('customer name'),
+                                     null=True, blank=True)
     phone_number = models.CharField(max_length=20,
                                     validators=[phone_number_validator, ],
                                     verbose_name=_('phone number'),
                                     unique=True)
-    status = models.CharField(max_length=12, choices=STATUSES, default=DEFAULT_STATUS, verbose_name=_('status'))
+    status = models.CharField(max_length=12, choices=STATUSES,
+                              default=DEFAULT_STATUS, verbose_name=_('status'))
     note = models.TextField(null=True, blank=True, verbose_name=_('notes'))
 
     class Meta:

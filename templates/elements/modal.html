@@ -11,11 +11,11 @@
       <div class="modal-body ps-sm-5 ps-md-3 ps-lg-5 py-0 pe-2 pe-sm-3 pe-md-2 pe-lg-3">
         <p class="mb-4">{{ project.description }}</p>
         {% for param in project.parameter_set.all %}
-          <div class="row" itemprop="description">
-            <dt class="col-6 col-lg-4">{{ param.title }}</dt>
-            <dd class="col-6 col-lg-4">{{ param.value }}</dd>
+          <div class="d-flex" itemprop="description">
+            <dt class="col-6 col-lg-4 pe-2">{{ param.title }}</dt>
+            <dd class="col-6 col-lg-4 ps-2">{{ param.value }}</dd>
           </div>
-         {% endfor %}
+        {% endfor %}
       </div>
       <div class="modal-footer justify-content-center justify-content-sm-end">
         <div class="col-12 col-sm-auto">
