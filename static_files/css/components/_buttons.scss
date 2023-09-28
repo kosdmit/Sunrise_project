@@ -2,7 +2,7 @@
 // Buttons
 // 
 
-.btn {
+.btn:not(.btn-category) {
     padding: 1.25rem 2rem;
     font-family: $font-family-special;
     font-size: 80%;

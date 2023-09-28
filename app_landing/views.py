@@ -1,12 +1,14 @@
 import os
 
+from django.http import Http404
 from django.views.generic import ListView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 import sunrise_project.settings as settings
-from app_landing.models import Project, Order, Tariff, TariffAdvantage
+from app_landing.models import Project, Order, Tariff, TariffAdvantage, \
+    Category
 from app_landing.services import TelegramNotificationManager, \
     CallbackMessageConstructor
 
@@ -19,15 +21,38 @@ notification_manager = TelegramNotificationManager(
 # Create your views here.
 class MainView(ListView):
     template_name = 'index.html'
-    model = Project
-    queryset = Project.objects.filter(is_active=True)
     paginate_by = 6
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.category_object = None
+
+    def dispatch(self, request, *args, **kwargs):
+        category_slug = self.request.GET.get('category')
+        if category_slug:
+            try:
+                self.category_object = Category.objects.get(slug=category_slug)
+            except Category.DoesNotExist:
+                raise Http404
+
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        if self.category_object:
+            queryset = Project.objects.filter(category=self.category_object, is_active=True)
+        else:
+            queryset = Project.objects.filter(is_active=True)
+
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         context['tariffs'] = Tariff.objects.all().order_by('price')
         context['tariff_advantages'] = TariffAdvantage.objects.all()
+
+        context['categories'] = Category.objects.all()
 
         return context
 

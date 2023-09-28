@@ -164,4 +164,16 @@ $(document).ready(function () {
     })
   })
 
+
+  // Category buttons functionality
+  let url_string = window.location.href
+  let url = new URL(url_string);
+  let category_slug = url.searchParams.get("category");
+  if (category_slug !== null) {
+    $('.projects-section .btn-category').each(function () {
+      $(this).removeClass('active')
+    })
+    $('#category-button-' + category_slug).addClass('active')
+  }
+
 });

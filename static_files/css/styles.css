@@ -12110,7 +12110,7 @@ body {
   }
 }
 
-.btn {
+.btn:not(.btn-category) {
   padding: 1.25rem 2rem;
   font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 80%;
@@ -12118,29 +12118,29 @@ body {
   letter-spacing: 0.15rem;
   border: 0;
 }
-.btn.btn-standard {
+.btn:not(.btn-category).btn-standard {
   padding: 1rem 1.3rem;
 }
-.btn:not(.shadow-none) {
+.btn:not(.btn-category):not(.shadow-none) {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
 }
-.btn.base-order-button {
+.btn:not(.btn-category).base-order-button {
   box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.2), 2px 2px 5px rgba(0, 0, 0, 0.2) !important;
 }
-.btn.btn-glass {
+.btn:not(.btn-category).btn-glass {
   backdrop-filter: blur(6px);
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
 }
-.btn.btn-glass:hover {
+.btn:not(.btn-category).btn-glass:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
-.btn.btn-glass-gray {
+.btn:not(.btn-category).btn-glass-gray {
   backdrop-filter: blur(6px);
   background-color: rgba(0, 0, 0, 0.1);
   color: #000;
 }
-.btn.btn-glass-gray:hover {
+.btn:not(.btn-category).btn-glass-gray:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 

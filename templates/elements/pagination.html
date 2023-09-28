@@ -1,5 +1,5 @@
 <nav aria-label="page navigation">
-  <ul class="pagination justify-content-center">
+  <ul class="pagination justify-content-center" style="display: none;">
     <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
       <a class="page-link" aria-label="Previous"
          href="?page=1{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">
