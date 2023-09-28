@@ -2,10 +2,14 @@
 // Variables
 //
 
+
+@import "./variables/colors.scss";
+@import "./variables/typography.scss";
+
+
 $modal-content-border-width: 0;
 $modal-backdrop-bg: black;
 $modal-backdrop-opacity: .8;
 $dropdown-divider-bg: rgba(255,255,255,0.175);
-
-@import "./variables/colors.scss";
-@import "./variables/typography.scss";
+$dropdown-link-active-bg: $secondary;
+$dropdown-divider-bg: rgba(0, 0, 0, 0.175);

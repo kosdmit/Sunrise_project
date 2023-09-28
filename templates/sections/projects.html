@@ -11,8 +11,8 @@
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-center mb-4" id="category-buttons">
-      <div class="btn-group pt-4">
+    <div class="d-flex justify-content-center mb-4 pt-4" id="category-buttons">
+      <div class="btn-group d-none d-md-flex">
         {% for category in categories %}
           <a class="btn btn-standard btn-category btn-outline-dark"
              href="?category={{ category.slug }}#category-buttons"
@@ -24,6 +24,28 @@
            aria-current="page" id="category-button-all">
           Все категории
         </a>
+      </div>
+      <div class="dropdown d-md-none">
+        <button class="btn btn-outline-dark btn-category dropdown-toggle"
+                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Категории
+        </button>
+        <ul class="dropdown-menu">
+          {% for category in categories %}
+            <li>
+              <a class="dropdown-item" href="?category={{ category.slug }}#category-buttons"
+                 id="category-dropdown-item-{{ category.slug }}">
+                {{ category.title }}
+              </a>
+            </li>
+          {% endfor %}
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <a class="dropdown-item active" href="/#category-buttons" id="category-dropdown-item-all">
+              Все категории
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

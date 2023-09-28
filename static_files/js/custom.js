@@ -170,10 +170,10 @@ $(document).ready(function () {
   let url = new URL(url_string);
   let category_slug = url.searchParams.get("category");
   if (category_slug !== null) {
-    $('.projects-section .btn-category').each(function () {
-      $(this).removeClass('active')
-    })
-    $('#category-button-' + category_slug).addClass('active')
+    $('#category-button-all').removeClass('active');
+    $('#category-button-' + category_slug).addClass('active');
+    $('#category-dropdown-item-all').removeClass('active');
+    $('#category-dropdown-item-' + category_slug).addClass('active');
   }
 
 });
