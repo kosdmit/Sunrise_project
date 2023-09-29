@@ -28,6 +28,7 @@ DEBUG = True if os.environ['DJANGO_DEBUG'] == 'True' else False
 ALLOWED_HOSTS = [
     '185.14.45.230', '185.14.45.230:8002',
     '127.0.0.1', 'localhost',
+    '185.104.113.254',  # Sunrise Project VPS
 ]
 
 
