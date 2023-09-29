@@ -67,7 +67,7 @@ class TariffListFilter(admin.SimpleListFilter):
 
     def queryset(self, request, queryset):
         if self.value():
-            return queryset.filter(tariff__tariffadvantages__pk=self.value())
+            return queryset.filter(tariff__tariffadvantage__pk=self.value())
         return queryset
 
 
