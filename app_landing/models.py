@@ -204,7 +204,7 @@ class Tariff(BaseModel):
                                        verbose_name=_('price prefix'),
                                        help_text=_("Adds the preposition 'from' before the price"))
     description = models.TextField(verbose_name=_('description'), null=True, blank=True)
-    tariff_advantages = models.ManyToManyField('TariffAdvantage', verbose_name=_('tariff advantages'))
+    tariff_advantages = models.ManyToManyField('TariffAdvantage', verbose_name=_('tariff advantages'), blank=True)
 
     class Meta:
         verbose_name = _('tariff')

@@ -57,6 +57,21 @@ class ProjectImageInlineAdmin(admin.StackedInline):
     image_preview.short_description = _('image preview')
 
 
+class TariffListFilter(admin.SimpleListFilter):
+    title = _('tariff')
+    parameter_name = 'tariff'
+
+    def lookups(self, request, model_admin):
+        tariffs = set([advantage.tariff for advantage in model_admin.model.objects.all()])
+        return [(tariff.id, tariff.title) for tariff in tariffs]
+
+    def queryset(self, request, queryset):
+        if self.value():
+            return queryset.filter(tariff__id__exact=self.value())
+        else:
+            return queryset
+
+
 # Register your models here.
 @admin.register(Project)
 class ProjectAdmin(BaseAdminMixin, admin.ModelAdmin):
@@ -164,6 +179,7 @@ class TariffAdvantageAdmin(BaseAdminMixin, admin.ModelAdmin):
     list_display = ['ordering', 'num_id', 'title', ]
     list_display_links = ['title']
     ordering = ['ordering', 'num_id']
+    list_filter = (TariffListFilter,)
 
     def get_fieldsets(self, request, obj=None):
         fieldsets = super().get_fieldsets(request, obj)
