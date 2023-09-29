@@ -63,11 +63,11 @@ class TariffListFilter(admin.SimpleListFilter):
 
     def lookups(self, request, model_admin):
         tariffs = Tariff.objects.all()
-        return [(tariff.id, tariff.title) for tariff in tariffs]
+        return [(tariff.pk, tariff.title) for tariff in tariffs]
 
     def queryset(self, request, queryset):
         if self.value():
-            return queryset.filter(tariff__tariffadvantages__id=self.value())
+            return queryset.filter(tariff__tariffadvantages__pk=self.value())
         return queryset
 
 
