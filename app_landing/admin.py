@@ -62,14 +62,13 @@ class TariffListFilter(admin.SimpleListFilter):
     parameter_name = 'tariff'
 
     def lookups(self, request, model_admin):
-        tariffs = set([advantage.tariff for advantage in model_admin.model.objects.all()])
+        tariffs = Tariff.objects.all()
         return [(tariff.id, tariff.title) for tariff in tariffs]
 
     def queryset(self, request, queryset):
         if self.value():
-            return queryset.filter(tariff__id__exact=self.value())
-        else:
-            return queryset
+            return queryset.filter(tariff__tariffadvantages__id=self.value())
+        return queryset
 
 
 # Register your models here.
