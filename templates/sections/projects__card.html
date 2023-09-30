@@ -1,14 +1,14 @@
 {% load custom_tags %}
 
 <div class="card card-clickable text-bg-dark rounded-0 border-0"
-     data-bs-toggle="modal" data-bs-target="#{{ project.slug }}-modal">
+     data-bs-toggle="modal" data-bs-target="#modal-{{ project.slug }}">
   <img src="{{ project.images.first.image.url }}" class="card-img rounded-0 fit-cover" alt="...">
   <div class="card-img-overlay {% if not project.is_featured %}small-overlay{% endif %}">
     <div class="hidden-text">
       {% if project.is_featured %}
         <p class="card-text m-0">{{ project.description }}</p>
         <button type="button" class="btn btn-link shadow-none text-white"
-                data-bs-toggle="modal" data-bs-target="#{{ project.slug }}-modal">
+                data-bs-toggle="modal" data-bs-target="#modal-{{ project.slug }}">
           Подробнее
         </button>
       {% endif %}

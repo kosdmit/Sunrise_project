@@ -1,9 +1,9 @@
-<div class="modal fade" id="{{ project.slug }}-modal" tabindex="-1" aria-labelledby="{{ project.slug }}-modal-label" aria-hidden="true">
+<div class="modal fade" id="modal-{{ project.slug }}" tabindex="-1" aria-labelledby="modal-label-{{ project.slug }}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-md-down modal-dialog-scrollable">
     <div class="modal-content bg-glass bg-glass-matt">
       {% include 'elements/carousel.html' %}
       <div class="modal-header px-sm-5 pt-sm-4 px-md-3 px-lg-5">
-        <h1 class="modal-title fs-5" id="{{ project.slug }}-modal-label">
+        <h1 class="modal-title fs-5" id="modal-label-{{ project.slug }}">
           {{ project.title }}
           {% if project.category %}<small class="ms-auto text-white-50 text-nowrap">// {{ project.category }}</small>{% endif %}
         </h1>
