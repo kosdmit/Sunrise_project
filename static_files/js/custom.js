@@ -142,8 +142,13 @@ $(document).ready(function () {
 
   }
   setFixedBackground();
+  var lastWindowWidth = $(window).width();
   $(window).resize(function() {
-    setFixedBackground();
+    var currentWindowWidth = $(window).width();
+    if (lastWindowWidth !== currentWindowWidth) {
+        setFixedBackground();
+        lastWindowWidth = currentWindowWidth;
+    }
   });
 
 
