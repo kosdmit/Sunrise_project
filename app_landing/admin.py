@@ -76,7 +76,7 @@ class TariffListFilter(admin.SimpleListFilter):
 class ProjectAdmin(BaseAdminMixin, admin.ModelAdmin):
     list_display = ['num_id', 'title', 'category', 'is_active', 'is_featured']
     list_display_links = ['title']
-    list_filter = ['category', 'is_active']
+    list_filter = ['category', 'is_active', 'is_featured', 'to_show_download_date']
     inlines = [ParameterInlineAdmin, ProjectImageInlineAdmin]
 
     def get_fieldsets(self, request, obj=None):
