@@ -37,6 +37,7 @@ class BaseAdminMixin:
 class ParameterInlineAdmin(admin.TabularInline):
     model = Parameter
     extra = 1
+    exclude = ['is_active']
 
 
 class ProjectImageInlineAdmin(admin.StackedInline):

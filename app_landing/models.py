@@ -28,7 +28,7 @@ class BaseModel(models.Model):
     updated_date = models.DateTimeField(auto_now=True, verbose_name=_('date of updating'))
 
     is_active = models.BooleanField(
-        default=False,
+        default=True,
         verbose_name=_('is active'),
         help_text=_("If this option is disabled, the object will be unavailable to users"),
     )
