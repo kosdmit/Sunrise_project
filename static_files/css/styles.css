@@ -12362,7 +12362,10 @@ body {
   color: white;
 }
 .projects-section .visible-text-text .card-text {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  white-space: nowrap; /* Prevents wrapping onto the next line */
+  overflow: hidden; /* Hide overflowing content */
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 90%, rgba(0, 0, 0, 0) 100%);
 }
 
 .projects-section .masonry-grid {

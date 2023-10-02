@@ -15,11 +15,16 @@
     </div>
     <div class="visible-text-text">
       <h5 class="card-title">{{ project.title }}</h5>
-      <p class="card-text {% if not project.to_show_download_date %}invisible{% endif %}">
+      <p class="card-text {% if not project.to_show_download_date and not project.parameter_set.all%}invisible{% endif %}">
         <small>
+          {% for parameter in project.parameter_set.all %}
+            {{ parameter.value }}{% if not forloop.last %},{% endif %}
+          {% endfor %}
           {% if project.to_show_download_date %}
+            {% if project.parameter_set.all %}, {% endif %}
             обновлено {{ project.updated_date|timesince|upto:',' }} назад
-          {% else %}
+          {% endif %}
+          {% if not project.to_show_download_date and not project.parameter_set.all%}
             none
           {% endif %}
         </small>
