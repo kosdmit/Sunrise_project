@@ -84,6 +84,27 @@ $(document).ready(function () {
 
   });
 
+  // Fix for doubling request and process buttons
+  let $viewMoreButton = $('.view-more-button')
+  let lastPageFlag = false
+
+  $masonryGrid.on( 'request.infiniteScroll', function( event, path, fetchPromise ) {
+    console.log(`Loading page: ${path}`);
+    $viewMoreButton.hide()
+  });
+  $masonryGrid.on( 'last.infiniteScroll', function( event, body, path ) {
+    console.log(`Last page hit on ${path}`);
+    $viewMoreButton.hide()
+    lastPageFlag = true
+  });
+  $masonryGrid.on( 'append.infiniteScroll', function( event, body, path, items, response ) {
+    console.log(`Appended ${items.length} items on ${path}`);
+    if (!lastPageFlag) {
+      $viewMoreButton.show()
+    }
+  });
+
+
 
   // goTariffsButton functionality
   function addTariffsButton () {
