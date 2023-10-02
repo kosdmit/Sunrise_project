@@ -21,5 +21,9 @@
             left: 50%;
             transform: translate(-50%, 0);
         }
+
+        .input-group-newsletter div:last-child {
+            backdrop-filter: blur(6px);
+        }
     }
 }

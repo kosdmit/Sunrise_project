@@ -12660,6 +12660,9 @@ h1.card-title, .card-title.h1 {
   left: 50%;
   transform: translate(-50%, 0);
 }
+.contact-section .form-signup .input-group-newsletter div:last-child {
+  backdrop-filter: blur(6px);
+}
 
 .contact-section {
   position: relative;
