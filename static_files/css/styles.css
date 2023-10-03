@@ -12036,6 +12036,12 @@ body {
   cursor: pointer;
 }
 
+.form-signup .message {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 #mainNav {
   min-height: 3.5rem;
   background-color: #f8f9fa;
@@ -12660,11 +12666,6 @@ h1.card-title, .card-title.h1 {
   letter-spacing: 0.15rem;
   border: 0;
   text-align: center;
-}
-.contact-section .form-signup .message {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
 }
 .contact-section .form-signup .input-group-newsletter div:last-child {
   backdrop-filter: blur(6px);

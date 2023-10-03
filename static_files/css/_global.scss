@@ -36,3 +36,9 @@ body {
 .card-clickable {
     cursor: pointer;
 }
+
+.form-signup .message {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}

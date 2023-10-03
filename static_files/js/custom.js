@@ -26,10 +26,13 @@ $(document).ready(function () {
   $("form[name='contact-form']").each(function () {
     $(this).submit(function (event) {
       event.preventDefault();
-      let phoneNumberInput = $(this).find('input[name="phone_number"]');
-      let phoneNumber = '+7' + phoneNumberInput.inputmask('unmaskedvalue')
+      let $phoneNumberInput = $(this).find('input[name="phone_number"]');
+      let phoneNumber = '+7' + $phoneNumberInput.inputmask('unmaskedvalue')
       let customerName = $(this).find('input[name="customer_name"]').val()
       let tariffSlug = $(this).attr('data-tariff-slug')
+      let $successMessage = $(this).find('div[name="submitSuccessMessage"]')
+      let $errorMessage = $(this).find('div[name="submitErrorMessage"]')
+      let $orderModal = $('#order-modal')
       console.log('sending phone number: ' + phoneNumber)
       console.log('sending customer name: ' + customerName)
       console.log('sending tariff slug: ' + tariffSlug)
@@ -45,12 +48,20 @@ $(document).ready(function () {
           'tariff_slug': tariffSlug,
         },
         success: function (response) {
-          $("#submitSuccessMessage").removeClass('d-none');
-          $("#submitErrorMessage").addClass('d-none');
+          $successMessage.removeClass('d-none');
+          $errorMessage.addClass('d-none');
+          if (tariffSlug) {
+            console.log('trying to open success modal')
+            $orderModal.one('hidden.bs.modal', function () {
+              $('#success-modal').modal('show');
+            })
+            $orderModal.modal('hide');
+
+          }
         },
         error: function (error) {
-          $("#submitErrorMessage").removeClass('d-none');
-          $("#submitSuccessMessage").addClass('d-none');
+          $errorMessage.removeClass('d-none');
+          $successMessage.addClass('d-none');
         }
       });
     });
