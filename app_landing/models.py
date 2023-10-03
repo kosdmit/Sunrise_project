@@ -182,6 +182,12 @@ class Order(BaseModel):
     status = models.CharField(max_length=12, choices=STATUSES,
                               default=DEFAULT_STATUS, verbose_name=_('status'))
     note = models.TextField(null=True, blank=True, verbose_name=_('notes'))
+    ordered_tariff = models.ForeignKey('Tariff',
+                                       default=None,
+                                       null=True,
+                                       blank=True,
+                                       on_delete=models.SET_DEFAULT,
+                                       verbose_name=_('ordered tariff'))
 
     class Meta:
         verbose_name = _('order')

@@ -128,14 +128,14 @@ class CategoryAdmin(BaseAdminMixin, admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(BaseAdminMixin, admin.ModelAdmin):
-    list_display = ['num_id', 'customer_name', 'phone_number', 'status', ]
+    list_display = ['num_id', 'customer_name', 'phone_number', 'status', 'ordered_tariff']
     list_display_links = ['phone_number']
-    list_filter = ['status', ]
+    list_filter = ['status', 'ordered_tariff']
 
     def get_fieldsets(self, request, obj=None):
         fieldsets = super().get_fieldsets(request, obj)
         fieldsets += [
-            (None, {"fields": ["customer_name", "phone_number", "note", "status"]}),
+            (None, {"fields": ["customer_name", "phone_number", "ordered_tariff", "note", "status"]}),
         ]
 
         return fieldsets

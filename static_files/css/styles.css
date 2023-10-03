@@ -12153,7 +12153,7 @@ body {
   --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 2);
 }
 
-.modal-body {
+.projects-section .modal-body {
   margin-right: 16px;
 }
 
@@ -12603,6 +12603,12 @@ body {
   background-color: transparent;
   color: white;
   border-color: rgba(255, 255, 255, 0.2);
+}
+.pricing-section .modal .modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.pricing-section .modal .modal-body p, .pricing-section .modal .form-text {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .pricing-bg {

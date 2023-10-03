@@ -1,0 +1,54 @@
+<div class="modal fade" id="order-modal" tabindex="-1" aria-labelledby="order-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-glass bg-glass-matt">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="order-modal-label">
+          <i class="fa-solid fa-check"></i>
+          Заказать проект
+        </h1>
+      </div>
+      <form class="form-signup" id="modal-contact-form" name="contact-form" action="{% url 'order_create' %}">
+        <div class="modal-body">
+
+          <img class="mb-4" width="80" height="80" src="/static/icons/exciting.svg" alt="">
+          <p class="mb-5">Укажите ваши контактные данные, и мы перезвоним вам, чтобы уточнить условия и ответить на ваши вопросы.</p>
+          <div class="mb-3 text-start">
+            <label class="form-label">{{ modal_order_create_form.customer_name.label|capfirst }}</label>
+            {{ modal_order_create_form.customer_name }}
+            <div id="customerNameHelp" class="form-text text-end">Необязательное поле</div>
+          </div>
+
+          <!-- Phone number input-->
+          <div class="input-group-newsletter">
+            <div class="mb-3 text-start">
+              <label class="form-label">{{ modal_order_create_form.phone_number.label|capfirst }}</label>
+              {{ modal_order_create_form.phone_number }}
+            </div>
+          </div>
+          <div class="d-none message" id="modal-submitSuccessMessage">
+            <div class="text-center mb-3 mt-2 text-white">
+              <div class="fw-bolder">Запрос успешно отправлен!</div>
+            </div>
+          </div>
+          <div class="d-none message" id="modal-submitErrorMessage">
+            <div class="text-center mb-3 mt-2 text-danger">
+              <div class="fw-bolder">При отправке запроса произошла ошибка, попробуйте снова</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center justify-content-sm-end">
+          <div class="col-12 col-sm-auto">
+            <button type="button" class="btn btn-secondary btn-standard w-100" data-bs-dismiss="modal">
+              Назад
+            </button>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <button type="submit" name="submitButton" class="btn btn-primary btn-standard w-100 disabled">
+              Отправить
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

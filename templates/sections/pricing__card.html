@@ -29,7 +29,8 @@
         </ul>
       </div>
       <button type="button" class="w-100 btn btn-lg
-              {% if forloop.last %}btn-black {% elif not forloop.first %}btn-primary{% else %}btn-outline-primary base-order-button{% endif %}">
+              {% if forloop.last %}btn-black {% elif not forloop.first %}btn-primary{% else %}btn-outline-primary base-order-button{% endif %}"
+              data-bs-toggle="modal" data-bs-target="#order-modal" data-bs-whatever="{{ tariff.slug }}">
         Заказать
       </button>
     </div>

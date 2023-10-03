@@ -20,42 +20,54 @@ const csrftoken = getCookie('csrftoken');
 $(document).ready(function () {
 
   //Phone number form functionality
-  let phoneNumberInput = $('#id_phone_number');
+
 
   // API
-  $("#contact-form").submit(function (event) {
-    event.preventDefault();
-    let phoneNumber = '+7' + phoneNumberInput.inputmask('unmaskedvalue')
-    console.log('sending phone number: ' + phoneNumber)
+  $("form[name='contact-form']").each(function () {
+    $(this).submit(function (event) {
+      event.preventDefault();
+      let phoneNumberInput = $(this).find('input[name="phone_number"]');
+      let phoneNumber = '+7' + phoneNumberInput.inputmask('unmaskedvalue')
+      let customerName = $(this).find('input[name="customer_name"]').val()
+      let tariffSlug = $(this).attr('data-tariff-slug')
+      console.log('sending phone number: ' + phoneNumber)
+      console.log('sending customer name: ' + customerName)
+      console.log('sending tariff slug: ' + tariffSlug)
 
 
-    $.ajax({
-      headers: {'X-CSRFToken': csrftoken},
-      url: '/api/order_create/',
-      type: 'POST',
-      data: {
-        'phone_number': phoneNumber,
-      },
-      success: function (response) {
-        $("#submitSuccessMessage").removeClass('d-none');
-        $("#submitErrorMessage").addClass('d-none');
-      },
-      error: function (error) {
-        $("#submitErrorMessage").removeClass('d-none');
-        $("#submitSuccessMessage").addClass('d-none');
-      }
+      $.ajax({
+        headers: {'X-CSRFToken': csrftoken},
+        url: '/api/order_create/',
+        type: 'POST',
+        data: {
+          'phone_number': phoneNumber,
+          'customer_name': customerName,
+          'tariff_slug': tariffSlug,
+        },
+        success: function (response) {
+          $("#submitSuccessMessage").removeClass('d-none');
+          $("#submitErrorMessage").addClass('d-none');
+        },
+        error: function (error) {
+          $("#submitErrorMessage").removeClass('d-none');
+          $("#submitSuccessMessage").addClass('d-none');
+        }
+      });
     });
-  });
+  })
 
   // Phone number validation
-  phoneNumberInput.inputmask("+7 (999) 999 99-99");
-  phoneNumberInput.on('input', function (event) {
-    if (phoneNumberInput.inputmask("isComplete")){
-      $("#submitButton").removeClass('disabled')
-    } else {
-      $("#submitButton").addClass('disabled')
-    }
+  $('input[name="phone_number"]').each(function () {
+    $(this).inputmask("+7 (999) 999 99-99");
+    $(this).on('input', function (event) {
+      if ($(this).inputmask("isComplete")){
+        $(this).closest('form').find('button[name="submitButton"]').removeClass('disabled')
+      } else {
+        $(this).closest('form').find('button[name="submitButton"]').addClass('disabled')
+      }
+    })
   })
+
 
 
   // Masonry Grid activation
@@ -200,6 +212,25 @@ $(document).ready(function () {
     $('#category-button-' + category_slug).addClass('active');
     $('#category-dropdown-item-all').removeClass('active');
     $('#category-dropdown-item-' + category_slug).addClass('active');
+  }
+
+
+  // Different content for order-modal
+  const orderModal = document.getElementById('order-modal')
+  if (orderModal) {
+    orderModal.addEventListener('show.bs.modal', event => {
+      // Button that triggered the modal
+      const button = event.relatedTarget
+      // Extract info from data-bs-* attributes
+      const tariffSlug = button.getAttribute('data-bs-whatever')
+      // If necessary, you could initiate an Ajax request here
+      // and then do the updating in a callback.
+
+      // Update the modal's content.
+      const modalContactForm = orderModal.querySelector('#modal-contact-form')
+
+      modalContactForm.setAttribute('data-tariff-slug', tariffSlug)
+    })
   }
 
 });
