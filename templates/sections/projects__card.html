@@ -4,7 +4,7 @@
      data-bs-toggle="modal" data-bs-target="#modal-{{ project.slug }}">
   <img src="{{ project.images.first.image.url }}" class="card-img rounded-0 fit-cover" alt="...">
   <div class="card-img-overlay {% if not project.is_featured %}small-overlay{% endif %}">
-    <div class="hidden-text">
+    <div class="hidden-text d-none d-md-flex">
       {% if project.is_featured %}
         <p class="card-text m-0">{{ project.description }}</p>
         <button type="button" class="btn btn-link shadow-none text-white"
@@ -13,7 +13,7 @@
         </button>
       {% endif %}
     </div>
-    <div class="visible-text-text">
+    <div class="visible-text-text d-none d-md-block">
       <h5 class="card-title">{{ project.title }}</h5>
       <p class="card-text {% if not project.to_show_download_date and not project.parameter_set.all%}invisible{% endif %}">
         <small>
