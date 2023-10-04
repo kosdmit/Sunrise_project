@@ -11,11 +11,15 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
     var navbarShrink = function () {
+        let url_string = window.location.href
+        let url = new URL(url_string);
+        let noIntro = url.searchParams.get("no-intro");
+
         const navbarCollapsible = document.body.querySelector('#mainNav');
         if (!navbarCollapsible) {
             return;
         }
-        if (window.scrollY === 0) {
+        if (window.scrollY === 0 && noIntro !== 'true') {
             navbarCollapsible.classList.remove('navbar-shrink')
         } else {
             navbarCollapsible.classList.add('navbar-shrink')

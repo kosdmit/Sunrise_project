@@ -15,12 +15,12 @@
       <div class="btn-group d-none d-md-flex">
         {% for category in categories %}
           <a class="btn btn-standard btn-category btn-outline-dark"
-             href="?category={{ category.slug }}#category-buttons"
+             href="?category={{ category.slug }}&no-intro=true#category-buttons"
              id="category-button-{{ category.slug }}">
             {{ category.title }}
           </a>
         {% endfor %}
-        <a href="/#category-buttons" class="btn btn-standard btn-category btn-outline-dark active"
+        <a href="/?no-intro=true#category-buttons" class="btn btn-standard btn-category btn-outline-dark active"
            aria-current="page" id="category-button-all">
           Все категории
         </a>
@@ -41,7 +41,7 @@
           {% endfor %}
           <li><hr class="dropdown-divider"></li>
           <li>
-            <a class="dropdown-item active" href="/?&no-intro=true#category-buttons" id="category-dropdown-item-all">
+            <a class="dropdown-item active" href="/?no-intro=true#category-buttons" id="category-dropdown-item-all">
               Все категории
             </a>
           </li>
