@@ -33,7 +33,7 @@
         <ul class="dropdown-menu">
           {% for category in categories %}
             <li>
-              <a class="dropdown-item" href="?category={{ category.slug }}#category-buttons"
+              <a class="dropdown-item" href="?category={{ category.slug }}&no-intro=true#category-buttons"
                  id="category-dropdown-item-{{ category.slug }}">
                 {{ category.title }}
               </a>
@@ -41,7 +41,7 @@
           {% endfor %}
           <li><hr class="dropdown-divider"></li>
           <li>
-            <a class="dropdown-item active" href="/#category-buttons" id="category-dropdown-item-all">
+            <a class="dropdown-item active" href="/?&no-intro=true#category-buttons" id="category-dropdown-item-all">
               Все категории
             </a>
           </li>

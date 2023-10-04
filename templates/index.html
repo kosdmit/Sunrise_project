@@ -4,6 +4,24 @@
   {% include 'sections/navigation.html' %}
   {% include 'sections/masthead.html' %}
   {% include 'sections/about.html' %}
+
+  <script>
+
+    // Hide intro sections if category has been  selected
+    let url_string = window.location.href
+    let url = new URL(url_string);
+    let noIntro = url.searchParams.get("no-intro");
+    if (noIntro === 'true') {
+      let mastheadSection = document.querySelector('header.masthead')
+      mastheadSection.setAttribute('style', "display: none")
+      let aboutSection = document.querySelector('#about')
+      aboutSection.setAttribute('style', "display: none")
+      let aboutLink = document.querySelector('#about-link')
+      aboutLink.setAttribute('href', '/#about')
+    }
+
+  </script>
+
   {% include 'sections/projects.html' %}
   {% include 'sections/pricing.html' %}
   {% include 'sections/contact.html' %}
