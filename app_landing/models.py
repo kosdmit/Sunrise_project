@@ -73,6 +73,7 @@ class Project(BaseModel):
     class Meta:
         verbose_name = _('project')
         verbose_name_plural = _('projects')
+        ordering = ['-num_id']
 
     def __str__(self):
         return self.title
