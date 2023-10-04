@@ -33,9 +33,6 @@ $(document).ready(function () {
       let $successMessage = $(this).find('div[name="submitSuccessMessage"]')
       let $errorMessage = $(this).find('div[name="submitErrorMessage"]')
       let $orderModal = $('#order-modal')
-      console.log('sending phone number: ' + phoneNumber)
-      console.log('sending customer name: ' + customerName)
-      console.log('sending tariff slug: ' + tariffSlug)
 
 
       $.ajax({
@@ -51,7 +48,6 @@ $(document).ready(function () {
           $successMessage.removeClass('d-none');
           $errorMessage.addClass('d-none');
           if (tariffSlug) {
-            console.log('trying to open success modal')
             $orderModal.one('hidden.bs.modal', function () {
               $('#success-modal').modal('show');
             })
@@ -103,7 +99,7 @@ $(document).ready(function () {
     hideNav: '.pagination',
     status: '.page-load-status',
     button: '.view-more-button',
-    debug: true,
+    debug: false,
 
   });
 
@@ -112,16 +108,13 @@ $(document).ready(function () {
   let lastPageFlag = false
 
   $masonryGrid.on( 'request.infiniteScroll', function( event, path, fetchPromise ) {
-    console.log(`Loading page: ${path}`);
     $viewMoreButton.hide()
   });
   $masonryGrid.on( 'last.infiniteScroll', function( event, body, path ) {
-    console.log(`Last page hit on ${path}`);
     $viewMoreButton.hide()
     lastPageFlag = true
   });
   $masonryGrid.on( 'append.infiniteScroll', function( event, body, path, items, response ) {
-    console.log(`Appended ${items.length} items on ${path}`);
     if (!lastPageFlag) {
       $viewMoreButton.show()
     }
@@ -156,10 +149,8 @@ $(document).ready(function () {
 
   // Set fixed background image size for prising section
   function setFixedBackground () {
-    console.log($(window).width())
     let $pricingContainer = $('#tariffs div.pricing-bg');
     let containerHeight = $pricingContainer.innerHeight();
-    console.log(containerHeight)
     if ($(window).width() < 992) {
       $pricingContainer.css(
           'background',
