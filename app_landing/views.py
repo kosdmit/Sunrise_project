@@ -21,7 +21,7 @@ notification_manager = TelegramNotificationManager(
 # Create your views here.
 class MainView(ListView):
     template_name = 'index.html'
-    paginate_by = 6
+    paginate_by = 12
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
